@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gerenciador</title>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header>
+	<div id="wrapper-logo"></div>
+
+	<ul id="wrapper-menu" class="dropdown">
+    <li class="wrapper-link">
+        <%= link_to "Cadastros", clientes_path, :class => 'dropdown-link ' + current_controller?('clientes') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><%= link_to "Clientes", clientes_path %></li>
+        </ul>
+      </li>
+      <li class="wrapper-link">
+    		<%= link_to "Conteúdo", postagems_path, :class => 'dropdown-link ' + current_controller?('postagems') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><%= link_to "Postagens", postagems_path %></li>
+        </ul>
+      </li>
+      <li class="wrapper-link">
+        <%= link_to "Sistema", usuarios_path, :class => 'dropdown-link ' + current_controller?('usuarios') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><%= link_to "Usuários", usuarios_path %></li>
+        </ul>
+      </li>
+  	</ul>
+</header>
+
+<div id="wrapper">
+<%= yield %>
+</div>
+
+<footer>
+</footer>
+
+</body>
+</html>

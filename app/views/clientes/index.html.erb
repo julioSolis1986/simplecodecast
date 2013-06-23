@@ -1,0 +1,42 @@
+<div id="wrapper-conteudo">
+  <h1>Listando Clientes</h1>
+
+  <% if params['notice'] %>
+  <div class="alert alert-success"><%= params['notice'] %></div>
+  <% end %>
+
+  
+  <table class="lista-conteudo">
+    <thead>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Nome</th>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Sexo</th>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Data de Nascimento</th>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> CPF</th>
+      <th></th>
+    </thead>
+
+  <% @clientes.each do |cliente| %>
+    <tr>
+      <td><%= link_to cliente.nome, cliente, :class => 'conteudo-modal' %></td>
+      <td><%= link_to cliente.sexo.nome, cliente, :class => 'conteudo-modal' %></td>
+      <td><%= link_to cliente.data_nascimento, cliente, :class => 'conteudo-modal' %></td>
+      <td><%= link_to cliente.cpf, cliente, :class => 'conteudo-modal' %></td>
+      <td class='comando'><%= link_to 'Excluir', cliente, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <div id="conteudo-rodape">
+  <%= link_to 'Novo Cliente', new_cliente_path, :class => 'btn btn-primary' %>
+  <div class="input-append" style='margin-bottom: 0px;'>
+    <input class="span2" id="appendedInputButtons" type="text">
+    <button class="btn" type="button"><i class="icon-search"></i></button>
+  </div>
+  <%= pagination @clientes %>
+  </div>
+</div>
+
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

@@ -1,0 +1,38 @@
+<div id="wrapper-conteudo">
+  <h1>Listando Postagems</h1>
+
+  <% if params['notice'] %>
+  <div class="alert alert-success"><%= params['notice'] %></div>
+  <% end %>
+
+  
+  <table class="lista-conteudo">
+    <thead>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Título</th>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Conteúdo</th>
+      <th></th>
+    </thead>
+
+  <% @postagems.each do |postagem| %>
+    <tr>
+      <td><%= link_to postagem.titulo, postagem, :class => 'conteudo-modal' %></td>
+      <td><%= link_to postagem.conteudo, postagem, :class => 'conteudo-modal' %></td>
+      <td class='comando'><%= link_to 'Excluir', postagem, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <div id="conteudo-rodape">
+  <%= link_to 'Nova Postagem', new_postagem_path, :class => 'btn btn-primary' %>
+  <div class="input-append" style='margin-bottom: 0px;'>
+    <input class="span2" id="appendedInputButtons" type="text">
+    <button class="btn" type="button"><i class="icon-search"></i></button>
+  </div>
+  <%= pagination @postagems %>
+  </div>
+</div>
+
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

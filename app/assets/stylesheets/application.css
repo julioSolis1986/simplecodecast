@@ -1,0 +1,194 @@
+/*
+ *= require reset
+
+ *= require jquery-ui-1.10.3.custom
+ *= require bootstrap
+ *= require bootstrap-fileupload
+ *= require postagems
+ *= require_self
+*/
+
+@media (min-width: 768px)
+
+body {
+	font-family: 'Open Sans', arial, sans-serif;
+}
+
+/*---------------------------------------------------------
+--------------------------HEADER---------------------------
+---------------------------------------------------------*/
+
+header {
+	width: 1024px;
+	margin: 0 auto;
+
+	border-bottom: 1px solid #e8e8e8;
+	height: 64px;
+}
+
+header #wrapper-menu {
+	float: right;
+	margin-top: 40px;
+	text-transform: uppercase;
+}
+
+header #wrapper-menu li.wrapper-link {
+	display: inline-block;
+}
+
+header #wrapper-menu a.dropdown-link {
+	font-size: 12px;
+	color: #717171;
+	padding: 0 6px 6px 6px;
+	margin: 0 12px 0 12px;
+	font-weight: bold;
+	text-align: center;
+	font-family: 'Open Sans', arial, sans-serif;
+}
+
+header #wrapper-menu a.dropdown-link .current {
+	border-bottom: 2px solid #39c;
+}
+
+header #wrapper-menu .dropdown-menu a {
+	font-size: 10px;
+	/*color: #717171;*/
+	font-weight: bold;
+	font-family: 'Open Sans', arial, sans-serif;
+}
+
+header .menu-avatar {
+	float: right;
+}
+
+#wrapper {
+	width: 1024px;
+	margin: 0 auto;
+}
+
+/*---------------------------------------------------------
+--------------------------CONTEUDO-------------------------
+---------------------------------------------------------*/
+
+#wrapper #wrapper-conteudo {
+	width: 940px;
+	padding: 42px 0 42px 0;
+	margin: 0 42px 0 42px;
+}
+
+#wrapper #wrapper-conteudo h1 {
+	margin-bottom: 32px;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo {
+	margin-top: 32px;
+	width: 100%;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo thead {
+	border-bottom: 1px solid #e8e8e8;
+	line-height: 30px;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo thead th {
+	text-align: left;
+	text-transform: uppercase;
+	color: #212121;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo tr {
+	line-height: 30px;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo td {
+	font-size: 12px;
+	text-transform: uppercase;
+	color: #212121;
+}
+
+#wrapper #wrapper-conteudo #conteudo-rodape .pagination {
+	float: right;
+	margin: 0;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo tr:nth-child(2n) {
+	background-color: #f6f6f6;
+}
+
+#wrapper #wrapper-conteudo table.lista-conteudo td.comando {
+	text-align: right;
+}
+
+/*---------------------------------------------------------
+--------------------------FOOTER---------------------------
+---------------------------------------------------------*/
+
+footer {
+	height: 200px;
+	background: -webkit-linear-gradient(top,#f3f3f3 0,#fff 100%);
+	background: -o-linear-gradient(top,#f3f3f3 0,#fff 100%);
+	background: -ms-linear-gradient(top,#f3f3f3 0,#fff 100%);
+	background: linear-gradient(top,#f3f3f3 0,#fff 100%);
+}
+
+/*---------------------------------------------------------
+--------------------------MODAL----------------------------
+---------------------------------------------------------*/
+
+#modal p b {
+	font-weight: bold;
+}
+
+#modal p {
+	font-size: 14px;
+	line-height: 18px;
+}
+
+/*---------------------------------------------------------
+--------------------------FORM-----------------------------
+---------------------------------------------------------*/
+
+#wrapper #wrapper-conteudo #form-div .form-confirm {
+	float: right;
+}
+
+#wrapper #wrapper-conteudo #form-div:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	background-image: url('/assets/glyphicons-halflings.png');
+}
+
+.tab-pane .nested-fields {
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.tab-pane .nested-fields:nth-last-of-type(2) {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: 0;
+}
+
+.tab-nested {
+	padding-bottom: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #eeeeee;
+}
+
+.dropdown-menu {
+	left: auto;
+}
+
+#modal{
+   width:940px;
+   margin-left:-470px;
+}
+
+.btn-remove {
+	margin-top: 25px;
+}
