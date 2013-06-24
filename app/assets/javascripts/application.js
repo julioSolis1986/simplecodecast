@@ -14,8 +14,8 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require cocoon
-//= require bootstrap
-//= require bootstrap-fileupload
+//= require bibliotecas/bootstrap
+//= require bibliotecas/bootstrap-fileupload
 //= require_tree .
 
 $(document).ready(function() {
@@ -54,7 +54,7 @@ $(document).ready(function() {
 	});
 
     $(function() {
-        $('input.datepicker').datepicker();
+        $('input[alt=datepicker]').datepicker();
     });
 
 });

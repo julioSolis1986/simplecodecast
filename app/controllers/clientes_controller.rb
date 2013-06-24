@@ -12,10 +12,6 @@ class ClientesController < ApplicationController
     @cliente = Cliente.find(params[:id])
 
     render :layout => false
-    #respond_to do |format|
-      #format.html
-      #format.json { render json: @cliente }
-    #end
   end
 
   def new
@@ -36,11 +32,9 @@ class ClientesController < ApplicationController
 
     respond_to do |format|
       if @cliente.save
-        format.html { redirect_to @cliente, notice: 'Cliente foi criado com sucesso.' }
-        format.json { render json: @cliente, status: :created, location: @cliente }
+        format.html { render action: 'index', notice: 'Cliente foi criado com sucesso.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @cliente.errors, status: :unprocessable_entity }
       end
     end
   end

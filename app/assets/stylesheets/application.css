@@ -1,9 +1,9 @@
 /*
- *= require reset
+ *= require bibliotecas/reset
 
- *= require jquery-ui-1.10.3.custom
- *= require bootstrap
- *= require bootstrap-fileupload
+ *= require bibliotecas/jquery-ui-1.10.3.custom
+ *= require bibliotecas/bootstrap
+ *= require bibliotecas/bootstrap-fileupload
  *= require postagems
  *= require_self
 */
