@@ -12,7 +12,8 @@
 <header>
 	<div id="wrapper-logo"></div>
 
-	<ul id="wrapper-menu" class="dropdown">
+	<div id="wrapper-menu" class="dropdown">
+    <ul id='wrapper-menu-direita'>
     <li class="wrapper-link">
         <%= link_to "Cadastros", clientes_path, :class => 'dropdown-link ' + current_controller?('clientes') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -32,6 +33,7 @@
         </ul>
       </li>
   	</ul>
+  </div>
 </header>
 
 <div id="wrapper">

@@ -19,24 +19,32 @@ body {
 ---------------------------------------------------------*/
 
 header {
-	width: 1024px;
-	margin: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 
+  background-color: #f0f0f0;
 	border-bottom: 1px solid #e8e8e8;
-	height: 64px;
+	height: 54px;
 }
 
-header #wrapper-menu {
-	float: right;
-	margin-top: 40px;
-	text-transform: uppercase;
+header div#wrapper-menu {
+  width: 940px;
+  margin: 0 auto;
 }
 
-header #wrapper-menu li.wrapper-link {
+header div#wrapper-menu ul#wrapper-menu-direita {
+  float: right;
+  line-height: 54px;
+  text-transform: uppercase;
+}
+
+header div#wrapper-menu ul#wrapper-menu-direita li.wrapper-link {
 	display: inline-block;
 }
 
-header #wrapper-menu a.dropdown-link {
+header div#wrapper-menu ul#wrapper-menu-direita a.dropdown-link {
 	font-size: 12px;
 	color: #717171;
 	padding: 0 6px 6px 6px;
@@ -46,11 +54,11 @@ header #wrapper-menu a.dropdown-link {
 	font-family: 'Open Sans', arial, sans-serif;
 }
 
-header #wrapper-menu a.dropdown-link .current {
+header div#wrapper-menu ul#wrapper-menu-direita a.dropdown-link .current {
 	border-bottom: 2px solid #39c;
 }
 
-header #wrapper-menu .dropdown-menu a {
+header div#wrapper-menu ul#wrapper-menu-direita .dropdown-menu a {
 	font-size: 10px;
 	/*color: #717171;*/
 	font-weight: bold;
@@ -62,8 +70,8 @@ header .menu-avatar {
 }
 
 #wrapper {
-	width: 1024px;
-	margin: 0 auto;
+	width: 940px;
+  margin: 54px auto;
 }
 
 /*---------------------------------------------------------
@@ -73,7 +81,6 @@ header .menu-avatar {
 #wrapper #wrapper-conteudo {
 	width: 940px;
 	padding: 42px 0 42px 0;
-	margin: 0 42px 0 42px;
 }
 
 #wrapper #wrapper-conteudo h1 {
@@ -124,11 +131,7 @@ header .menu-avatar {
 ---------------------------------------------------------*/
 
 footer {
-	height: 200px;
-	background: -webkit-linear-gradient(top,#f3f3f3 0,#fff 100%);
-	background: -o-linear-gradient(top,#f3f3f3 0,#fff 100%);
-	background: -ms-linear-gradient(top,#f3f3f3 0,#fff 100%);
-	background: linear-gradient(top,#f3f3f3 0,#fff 100%);
+	background-color: #f3f3f3;
 }
 
 /*---------------------------------------------------------
