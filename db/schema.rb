@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617013921) do
+ActiveRecord::Schema.define(:version => 20130625225331) do
+
+  create_table "anamneses", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "avaliacao_fisicas", :force => true do |t|
+    t.integer  "anamneses_id"
+    t.integer  "clientes_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
 
   create_table "cidades", :force => true do |t|
     t.string   "nome"
@@ -64,7 +76,7 @@ ActiveRecord::Schema.define(:version => 20130617013921) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "etnia", :force => true do |t|
+  create_table "etnias", :force => true do |t|
     t.string "nome"
   end
 
@@ -74,7 +86,24 @@ ActiveRecord::Schema.define(:version => 20130617013921) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "postagems", :force => true do |t|
+  create_table "perguntas", :force => true do |t|
+    t.string   "pergunta"
+    t.integer  "codigo"
+    t.integer  "tipo"
+    t.string   "nome_modelo"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "perguntas_anamneses", :force => true do |t|
+    t.integer  "anamneses_id"
+    t.integer  "perguntas_id"
+    t.text     "resposta"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "postagens", :force => true do |t|
     t.string   "titulo"
     t.text     "conteudo"
     t.boolean  "status"

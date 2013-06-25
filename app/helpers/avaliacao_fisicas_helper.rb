@@ -1,0 +1,2 @@
+module AvaliacaoFisicasHelper
+end

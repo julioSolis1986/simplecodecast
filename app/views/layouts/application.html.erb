@@ -27,6 +27,12 @@
         </ul>
       </li>
       <li class="wrapper-link">
+        <%= link_to "Serviços", avaliacao_fisicas_path, :class => 'dropdown-link ' + current_controller?('avaliacao_fisicas') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+          <li><%= link_to "Avaliações Físicas", avaliacao_fisicas_path %></li>
+        </ul>
+      </li>
+      <li class="wrapper-link">
         <%= link_to "Sistema", usuarios_path, :class => 'dropdown-link ' + current_controller?('usuarios') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
           <li><%= link_to "Usuários", usuarios_path %></li>

@@ -33,7 +33,7 @@
   <div class="tab-pane" id="tab-enderecos">
     <div class='tab-nested' id="enderecos_field">
       <%= f.fields_for :enderecos do |endereco| %>
-      <%= render 'enderecos/enderecos_form', f, :endereco %>
+        <%= render 'enderecos/enderecos_form', f, :endereco %>
       <% end %>  
 
       <%= link_to_add_association "Novo Endereço", f, :enderecos, :partial => 'enderecos/enderecos_form', :class => 'btn btn-success btn-block' %>

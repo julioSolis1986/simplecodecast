@@ -1,4 +1,7 @@
 Gerenciador::Application.routes.draw do
+  resources :avaliacao_fisicas
+
+
   resources :clientes
 
 

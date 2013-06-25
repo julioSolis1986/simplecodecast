@@ -1,0 +1,30 @@
+<%= simple_form_for @avaliacao_fisica, :html => { :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
+<% if @avaliacao_fisica.errors.any? %>
+<div id="error_explanation">
+  <ul>
+    <% @avaliacao_fisica.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<ul class="nav nav-tabs" id="tabs">
+  <li class="active"><a href="#tab-anamnese">Anamnese</a></li>
+</ul>
+
+<div class="tab-content">
+  <div class="tab-pane active" id="tab-anamnese">
+    <div class="row-fluid">
+      <%= f.fields_for :anamnese do |anamnese| %>
+        <%= render 'anamneses/anamneses_form', :f => anamnese %>
+      <% end %>  
+    </div>
+  </div>
+</div>
+
+<div class="btn-group navigation-modal form-confirm">
+  <%= link_to 'Voltar', avaliacao_fisicas_path, :class => 'btn' %>
+  <%= f.submit :class => 'btn btn-primary' %>
+</div>
+<% end %>
