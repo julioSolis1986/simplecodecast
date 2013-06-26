@@ -11,11 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625225331) do
+ActiveRecord::Schema.define(:version => 20130625223702) do
 
   create_table "anamneses", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "pergunta_1_01"
+    t.string   "pergunta_2_01"
+    t.string   "pergunta_2_02"
+    t.string   "pergunta_3_01"
+    t.string   "pergunta_3_02"
+    t.string   "pergunta_3_03"
+    t.string   "pergunta_3_04"
+    t.string   "pergunta_3_05"
+    t.string   "pergunta_3_06"
+    t.string   "pergunta_3_07"
+    t.string   "pergunta_3_08"
+    t.string   "pergunta_3_09"
+    t.string   "pergunta_3_10"
+    t.text     "resposta_1_01"
+    t.boolean  "resposta_2_01"
+    t.boolean  "resposta_2_02"
+    t.boolean  "resposta_3_01"
+    t.boolean  "resposta_3_02"
+    t.boolean  "resposta_3_03"
+    t.boolean  "resposta_3_04"
+    t.boolean  "resposta_3_05"
+    t.boolean  "resposta_3_06"
+    t.boolean  "resposta_3_07"
+    t.boolean  "resposta_3_08"
+    t.boolean  "resposta_3_09"
+    t.boolean  "resposta_3_10"
+    t.integer  "avaliacao_fisica_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "avaliacao_fisicas", :force => true do |t|
@@ -76,7 +103,7 @@ ActiveRecord::Schema.define(:version => 20130625225331) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "etnias", :force => true do |t|
+  create_table "etnia", :force => true do |t|
     t.string "nome"
   end
 
@@ -84,23 +111,6 @@ ActiveRecord::Schema.define(:version => 20130625225331) do
     t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "perguntas", :force => true do |t|
-    t.string   "pergunta"
-    t.integer  "codigo"
-    t.integer  "tipo"
-    t.string   "nome_modelo"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "perguntas_anamneses", :force => true do |t|
-    t.integer  "anamneses_id"
-    t.integer  "perguntas_id"
-    t.text     "resposta"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
   end
 
   create_table "postagens", :force => true do |t|

@@ -1,4 +1,6 @@
 <%= simple_form_for @avaliacao_fisica, :html => { :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
+<%= f.input :clientes_id, :as => :hidden, :input_html => { :value => @clientes_id } %>
+
 <% if @avaliacao_fisica.errors.any? %>
 <div id="error_explanation">
   <ul>
@@ -15,11 +17,9 @@
 
 <div class="tab-content">
   <div class="tab-pane active" id="tab-anamnese">
-    <div class="row-fluid">
-      <%= f.fields_for :anamnese do |anamnese| %>
-        <%= render 'anamneses/anamneses_form', :f => anamnese %>
-      <% end %>  
-    </div>
+    <%= f.fields_for :anamneses do |anamnese| %>
+      <%= render 'anamneses/anamneses_form', :f => anamnese %>
+    <% end %>
   </div>
 </div>
 

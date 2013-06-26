@@ -1,15 +1,13 @@
+#encoding: utf-8
 class Anamnese < ActiveRecord::Base
-  belongs_to :avaliacao_fisica
-
-  after_initiliaze :build_perguntas
+  after_initialize :build_perguntas
 
   def build_perguntas
-    raise 'a'.inspect
     if self.new_record?
       self.pergunta_1_01 = 'Objetivos com relação à Atividade Física'
 
       self.pergunta_2_01 = 'Pratica atualmente algum tipo de atividade física?'
-      self.pergunta_2_01 = 'Praticou algum tipo de atividade física no passado?'
+      self.pergunta_2_02 = 'Praticou algum tipo de atividade física no passado?'
 
       self.pergunta_3_01 = 'Doenças na família nos últimos anos?'
       self.pergunta_3_02 = 'Doenças pessoais nos últimos anos?'

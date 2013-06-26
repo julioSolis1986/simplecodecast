@@ -5,29 +5,27 @@
   <div class="alert alert-success"><%= params['notice'] %></div>
   <% end %>
 
-  <table class="lista-conteudo">
-    <thead>
-      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Data</th>
-      <th></th>
-    </thead>
+  <% @clientes.each do |cliente| %>
+    <h4><%= cliente.nome %> <%= link_to raw('<i class="icon-plus"></i>'), new_avaliacao_fisica_path(:clientes_id => cliente.id) %></h4>
+    <table class="lista-conteudo">
+      <thead>
+        <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Data</th>
+        <th></th>
+      </thead>
 
-  <% @avaliacao_fisicas.each do |avaliacao_fisica| %>
-    <tr>
-      <td><%= link_to avaliacao_fisica.nome, avaliacao_fisica, :class => 'conteudo-modal' %></td>
-      <td class='comando'><%= link_to 'Excluir', avaliacao_fisica, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
-    </tr>
+    <% cliente.avaliacao_fisicas.each do |avaliacao_fisica| %>
+      <tr>
+        <td><%= link_to avaliacao_fisica.created_at, avaliacao_fisica, :class => 'conteudo-modal' %></td>
+        <td class='comando'><%= link_to 'Excluir', avaliacao_fisica, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+      </tr>
+    <% end %>
+    </table>
   <% end %>
-  </table>
 
   <br />
 
   <div id="conteudo-rodape">
-  <%= link_to 'Nova Avaliação Física', new_avaliacao_fisica_path, :class => 'btn btn-primary' %>
-  <div class="input-append" style='margin-bottom: 0px;'>
-    <input class="span2" id="appendedInputButtons" type="text">
-    <button class="btn" type="button"><i class="icon-search"></i></button>
-  </div>
-  <%= pagination @avaliacao_fisicas %>
+  <%= pagination @clientes %>
   </div>
 </div>
 

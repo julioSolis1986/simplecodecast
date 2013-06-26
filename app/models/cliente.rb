@@ -4,6 +4,8 @@ class Cliente < ActiveRecord::Base
 
   validates_presence_of :sexo_id, :etnia_id, :nome, :cpf
 
+  has_many :avaliacao_fisicas, :foreign_key => :clientes_id
+
 	belongs_to :etnia
 	belongs_to :sexo
 
