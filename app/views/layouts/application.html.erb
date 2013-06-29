@@ -8,46 +8,149 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class='navbar navbar-inverse sem-margem'>
+    <div class='navbar-inner navbar-inverse blue'>
+      <a class="brand" href="#">eonGym</a>
+      <div class="nav-collapse">
+        <!-- <ul class="nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+          <li><a href="#">Link</a></li>
+        </ul> -->
+        <ul class="nav shang-nav pull-right">
+          <li>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <i class="icon-tasks icon-large"></i>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <i class="icon-bell-alt icon-large"></i>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+              <i class="icon-envelope icon-large"></i>
+            </a>
+          </li>
+          <li class="light-blue user-profile">
+            <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
+              <%= image_tag 'avatars/user.jpg', :class => "nav-user-photo" %>
+              <span id="user_info">
+                <small>Bem vindo,</small>
+                Minoru
+              </span>
 
-<header>
-	<div id="wrapper-logo"></div>
+              <i class="icon-caret-down"></i>
+            </a>
 
-	<div id="wrapper-menu" class="dropdown">
-    <ul id='wrapper-menu-direita'>
-    <li class="wrapper-link">
-        <%= link_to "Cadastros", clientes_path, :class => 'dropdown-link ' + current_controller?('clientes') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><%= link_to "Clientes", clientes_path %></li>
+            <ul class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer" id="user_menu">
+              <li>
+                <a href="#">
+                  <i class="icon-cog"></i>
+                  Configurações
+                </a>
+              </li>
+
+              <li>
+                <a href="#">
+                  <i class="icon-user"></i>
+                  Perfil
+                </a>
+              </li>
+
+              <li class="divider"></li>
+
+              <li>
+                <a href="#">
+                  <i class="icon-off"></i>
+                  Sair
+                </a>
+              </li>
+            </ul>
+          </li>
         </ul>
-      </li>
-      <li class="wrapper-link">
-    		<%= link_to "Conteúdo", postagems_path, :class => 'dropdown-link ' + current_controller?('postagems') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><%= link_to "Postagens", postagems_path %></li>
-        </ul>
-      </li>
-      <li class="wrapper-link">
-        <%= link_to "Serviços", avaliacao_fisicas_path, :class => 'dropdown-link ' + current_controller?('avaliacao_fisicas') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><%= link_to "Avaliações Físicas", avaliacao_fisicas_path %></li>
-        </ul>
-      </li>
-      <li class="wrapper-link">
-        <%= link_to "Sistema", usuarios_path, :class => 'dropdown-link ' + current_controller?('usuarios') + ' dropdown-toggle', :data => {:toggle => 'dropdown'} %>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-          <li><%= link_to "Usuários", usuarios_path %></li>
-        </ul>
-      </li>
-  	</ul>
+      </div>
+    </div>
   </div>
-</header>
 
-<div id="wrapper">
-<%= yield %>
-</div>
+  <div class='container-fluid' id='main-container'>
+    <div id='menu-lateral'>
+      <ul class='nav nav-list'>
+        <li>
+          <a href="#" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span>Cadastros</span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
 
-<footer>
-</footer>
+          <ul class="submenu" style="display: block;">
+            <li>
+              <%= link_to clientes_path, :class => current_controller?('clientes') do %>
+                <i class="icon-double-angle-right"></i>
+                Clientes
+              <% end %>
+            </li>
+          </ul>
+        </li>
 
+        <li>
+          <a href="#" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span>Conteúdos</span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu" style="display: block;">
+            <li>
+              <%= link_to postagems_path, :class => current_controller?('clientes') do %>
+                <i class="icon-double-angle-right"></i>
+                Postagens
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span>Serviços</span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu" style="display: block;">
+            <li>
+              <%= link_to avaliacao_fisicas_path, :class => current_controller?('clientes') do %>
+                <i class="icon-double-angle-right"></i>
+                Avaliações Físicas
+              <% end %>
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" class="dropdown-toggle">
+            <i class="icon-user"></i>
+            <span>Sistema</span>
+            <b class="arrow icon-angle-down"></b>
+          </a>
+
+          <ul class="submenu" style="display: block;">
+            <li>
+              <%= link_to usuarios_path, :class => current_controller?('clientes') do %>
+                <i class="icon-double-angle-right"></i>
+                Sistema
+              <% end %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div id="main-content" class='clearfix'>
+    <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

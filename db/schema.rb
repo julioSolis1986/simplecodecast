@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625223702) do
+ActiveRecord::Schema.define(:version => 20130626233007) do
 
   create_table "anamneses", :force => true do |t|
     t.string   "pergunta_1_01"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(:version => 20130625223702) do
     t.integer  "clientes_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+  end
+
+  create_table "avaliacao_perimetros", :force => true do |t|
+    t.string  "tipo"
+    t.string  "nome"
+    t.integer "valor_1"
+    t.integer "valor_2"
+    t.integer "perimetros_id"
   end
 
   create_table "cidades", :force => true do |t|
@@ -103,7 +111,7 @@ ActiveRecord::Schema.define(:version => 20130625223702) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "etnia", :force => true do |t|
+  create_table "etnias", :force => true do |t|
     t.string "nome"
   end
 
@@ -111,6 +119,12 @@ ActiveRecord::Schema.define(:version => 20130625223702) do
     t.string   "nome"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "perimetros", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
   end
 
   create_table "postagens", :force => true do |t|

@@ -1,6 +1,6 @@
 class CreateAnamnese < ActiveRecord::Migration
   def up
-    create_table :anamneses do |t|      
+    create_table :anamneses do |t|
       t.string :pergunta_1_01
 
       t.string :pergunta_2_01
@@ -32,7 +32,6 @@ class CreateAnamnese < ActiveRecord::Migration
       t.boolean :resposta_3_08
       t.boolean :resposta_3_09
       t.boolean :resposta_3_10
-
       t.references :avaliacao_fisica
 
       t.timestamps

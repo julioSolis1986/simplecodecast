@@ -5,6 +5,7 @@ gem 'mysql2'
 
 group :assets do
   gem 'uglifier', '>= 1.0.3'
+  gem "font-awesome-rails"
 end
 
 gem 'jquery-rails'
@@ -18,8 +19,9 @@ gem "paperclip"
 gem 'simple_form'
 gem 'thin'
 gem 'inherited_resources'
-gem 'sunspot_rails'
 gem 'brazilian-rails'
+gem 'therubyracer'
+
 #gem "nested_form"
 
 # To use ActiveModel has_secure_password
