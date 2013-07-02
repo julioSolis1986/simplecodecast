@@ -3210,7 +3210,7 @@ button.close {
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
   cursor: pointer;
-  background-color: #dfdfdf;
+  background-color: #e5e5e5;
   *background-color: #c8c8c8;
   background-image: -moz-linear-gradient(top, #eeeeee, #c8c8c8);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#c8c8c8));
@@ -3362,7 +3362,7 @@ input[type="button"].btn-block {
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #0f82f5;
+  background-color: #438eb9;
   *background-color: #438db9;
   background-image: -moz-linear-gradient(top, #1a8cff, #438db9);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1a8cff), to(#438db9));

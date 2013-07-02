@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626233007) do
+ActiveRecord::Schema.define(:version => 20130702012100) do
 
   create_table "anamneses", :force => true do |t|
     t.string   "pergunta_1_01"
@@ -60,6 +60,15 @@ ActiveRecord::Schema.define(:version => 20130626233007) do
     t.integer "perimetros_id"
   end
 
+  create_table "avaliacoes_cardiorespiratorias", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.string   "protocolo"
+    t.decimal  "distancia_total",      :precision => 10, :scale => 0
+    t.decimal  "freq_cardiaca_maxima", :precision => 10, :scale => 0
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+  end
+
   create_table "cidades", :force => true do |t|
     t.string   "nome"
     t.boolean  "capital",    :default => false
@@ -78,6 +87,21 @@ ActiveRecord::Schema.define(:version => 20130626233007) do
     t.text     "observacao"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+  end
+
+  create_table "composicoes_corporais", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.string   "protocolo"
+    t.decimal  "peso_atual",          :precision => 10, :scale => 0
+    t.decimal  "altura",              :precision => 10, :scale => 0
+    t.decimal  "abdome",              :precision => 10, :scale => 0
+    t.decimal  "antebraco",           :precision => 10, :scale => 0
+    t.decimal  "coxa",                :precision => 10, :scale => 0
+    t.decimal  "quadril",             :precision => 10, :scale => 0
+    t.decimal  "panturrilha",         :precision => 10, :scale => 0
+    t.decimal  "braco",               :precision => 10, :scale => 0
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
   end
 
   create_table "emails", :force => true do |t|
@@ -113,6 +137,14 @@ ActiveRecord::Schema.define(:version => 20130626233007) do
 
   create_table "etnias", :force => true do |t|
     t.string "nome"
+  end
+
+  create_table "neuromotores", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.integer  "abdominal_repeticoes"
+    t.integer  "flexao_repeticoes"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "paises", :force => true do |t|

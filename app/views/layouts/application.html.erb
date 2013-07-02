@@ -78,9 +78,9 @@
   <div class='container-fluid' id='main-container'>
     <div id='menu-lateral'>
       <ul class='nav nav-list'>
-        <li>
+        <li <%= html_current_controller?('clientes') %>>
           <a href="#" class="dropdown-toggle">
-            <i class="icon-user"></i>
+            <i class="icon-group"></i>
             <span>Cadastros</span>
             <b class="arrow icon-angle-down"></b>
           </a>
@@ -88,59 +88,55 @@
           <ul class="submenu" style="display: block;">
             <li>
               <%= link_to clientes_path, :class => current_controller?('clientes') do %>
-                <i class="icon-double-angle-right"></i>
                 Clientes
               <% end %>
             </li>
           </ul>
         </li>
 
-        <li>
+        <li <%= html_current_controller?('postagems') %>>
           <a href="#" class="dropdown-toggle">
-            <i class="icon-user"></i>
+            <i class="icon-edit"></i>
             <span>Conteúdos</span>
             <b class="arrow icon-angle-down"></b>
           </a>
 
           <ul class="submenu" style="display: block;">
             <li>
-              <%= link_to postagems_path, :class => current_controller?('clientes') do %>
-                <i class="icon-double-angle-right"></i>
+              <%= link_to postagems_path, :class => current_controller?('postagems') do %>
                 Postagens
               <% end %>
             </li>
           </ul>
         </li>
 
-        <li>
+        <li <%= html_current_controller?('avaliacao_fisicas') %>>
           <a href="#" class="dropdown-toggle">
-            <i class="icon-user"></i>
+            <i class="icon-archive"></i>
             <span>Serviços</span>
             <b class="arrow icon-angle-down"></b>
           </a>
 
           <ul class="submenu" style="display: block;">
             <li>
-              <%= link_to avaliacao_fisicas_path, :class => current_controller?('clientes') do %>
-                <i class="icon-double-angle-right"></i>
+              <%= link_to avaliacao_fisicas_path, :class => current_controller?('avaliacao_fisicas') do %>
                 Avaliações Físicas
               <% end %>
             </li>
           </ul>
         </li>
 
-        <li>
+        <li <%= html_current_controller?('usuarios') %>>
           <a href="#" class="dropdown-toggle">
-            <i class="icon-user"></i>
+            <i class="icon-cog"></i>
             <span>Sistema</span>
             <b class="arrow icon-angle-down"></b>
           </a>
 
           <ul class="submenu" style="display: block;">
             <li>
-              <%= link_to usuarios_path, :class => current_controller?('clientes') do %>
-                <i class="icon-double-angle-right"></i>
-                Sistema
+              <%= link_to usuarios_path, :class => current_controller?('usuarios') do %>
+                Usuários
               <% end %>
             </li>
           </ul>

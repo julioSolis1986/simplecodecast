@@ -4,12 +4,9 @@
       <div class="row-fluid">
         <div class="span12">
           <%= field_set_tag "Perímetros Unilaterais" do %>
-          <%= f.fields_for :avaliacao_perimetro, @avaliacao_fisica.perimetro.build_perimetros do |avaliacao_perimetro| %>
+          <%= f.simple_fields_for :avaliacao_perimetro, :avaliacao_perimetro do |avaliacao_perimetro| %>
           <div class="row-fluid">
-            <%= avaliacao_perimetro.input :valor_1, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span4' } do %>
-              <%= avaliacao_perimetro.label :valor_1, @avaliacao_fisica.perimetro.avaliacao_perimetro.first.nome %>
-              <%= avaliacao_perimetro.text_field :valor_1 %>
-            <% end %>
+            <%= avaliacao_perimetro.input :valor_1, :as => :string, :label => avaliacao_perimetro.object.nome, :wrapper_html => { :class => 'span12' } if avaliacao_perimetro.object.tipo.to_i == 1 %>
           </div>
           <% end %>
           <% end %>
@@ -20,12 +17,12 @@
       <div class="row-fluid">
         <div class="span12">
           <%= field_set_tag "Perímetros Bilaterais" do %>
+          <%= f.simple_fields_for :avaliacao_perimetro, :avaliacao_perimetro do |avaliacao_perimetro| %>
           <div class="row-fluid">
-            <%= f.input :resposta_2_01, :as => :boolean, :inline_label => @avaliacao_fisica.anamneses.pergunta_2_01, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+            <%= avaliacao_perimetro.input :valor_1, :as => :string, :label => avaliacao_perimetro.object.nome, :wrapper_html => { :class => 'span6' } if avaliacao_perimetro.object.tipo.to_i == 2 %>
+            <%= avaliacao_perimetro.input :valor_2, :as => :string, :label => avaliacao_perimetro.object.nome, :wrapper_html => { :class => 'span6' } if avaliacao_perimetro.object.tipo.to_i == 2 %>
           </div>
-          <div class="row-fluid">
-            <%= f.input :resposta_2_02, :as => :boolean, :inline_label => @avaliacao_fisica.anamneses.pergunta_2_02, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
-          </div>
+          <% end %>
           <% end %>
         </div>
       </div>

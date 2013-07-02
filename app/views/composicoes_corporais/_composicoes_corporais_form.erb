@@ -1,0 +1,77 @@
+<div class="nested-fields">
+  <%= field_set_tag "Protocolo" do %>
+    <div class="row-fluid">
+      <%= f.input :protocolo, :as => :check_boxes, :collection => ['Pollock', 'McArdle'] , :label => false, :wrapper_html => { :class => 'span12' } %>
+    </div>
+  <% end %>
+
+  <div class='row-fluid'>
+    <div class='span4'>
+      <%= field_set_tag "Medidas" do %>
+        <div class="row-fluid">
+          <%= f.input :peso_atual, :as => :string, :label => 'Peso Atual', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= f.input :altura, :as => :string, :label => 'Altura', :wrapper_html => { :class => 'span12' } %>
+        </div>
+      <% end %>
+    </div>
+    <div class='span4'>
+      <%= field_set_tag "Circunferências" do %>
+        <div class="row-fluid">
+          <%= f.input :abdome, :as => :string, :label => 'Peso Atual', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= f.input :antebraco, :as => :string, :label => 'Altura', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= f.input :coxa, :as => :string, :label => 'Peso Atual', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= f.input :quadril, :as => :string, :label => 'Altura', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= f.input :panturrilha, :as => :string, :label => 'Peso Atual', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= f.input :braco, :as => :string, :label => 'Altura', :wrapper_html => { :class => 'span12' } %>
+        </div>
+        <div class="row-fluid">
+          <%= label_tag :soma, 'Soma' %>
+          <%= text_field_tag :soma, '', { :class => 'span12' } %>
+        </div>
+      <% end %>
+    </div>
+    <div class='span4'>
+      <%= field_set_tag "Resultados" do %>
+        <div class='row-fluid'>
+          <div class='span12'>
+            <div class="row-fluid">
+              <%= label_tag :gordura_ideal, 'Gordura ideal' %>
+              <%= text_field_tag :gordura_ideal, '', { :class => 'span12' } %>
+            </div>
+            <div class="row-fluid">
+              <%= label_tag :gordura_atual, 'Gordura atual' %>
+              <%= text_field_tag :gordura_atual, '', { :class => 'span12' } %>
+            </div>
+            <div class="row-fluid">
+              <%= label_tag :peso_gordo, 'Peso gordo' %>
+              <%= text_field_tag :peso_gordo, '', { :class => 'span12' } %>
+            </div>
+            <div class="row-fluid">
+              <%= label_tag :peso_magro, 'Peso magro' %>
+              <%= text_field_tag :peso_magro, '', { :class => 'span12' } %>
+            </div>
+            <div class="row-fluid">
+              <%= label_tag :peso_ideal, 'Peso ideal' %>
+              <%= text_field_tag :peso_ideal, '', { :class => 'span12' } %>
+            </div>
+            <div class="row-fluid">
+              <%= high_chart("my_id4", @chart) %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

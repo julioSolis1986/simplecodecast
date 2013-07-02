@@ -2,6 +2,9 @@
 class Perimetro < ActiveRecord::Base
   belongs_to :avaliacao_fisica
   has_many :avaliacao_perimetro, :foreign_key => :perimetros_id
+  accepts_nested_attributes_for :avaliacao_perimetro
+
+  after_initialize :build_perimetros
 
   def build_perimetros
     if self.new_record?

@@ -14,6 +14,9 @@
 <ul class="nav nav-tabs" id="tabs">
   <li class="active"><a href="#tab-anamnese">Anamnese</a></li>
   <li><a href="#tab-perimetro">Perímetros</a></li>
+  <li><a href="#tab-composicao-corporal">Composição Corporal</a></li>
+  <li><a href="#tab-avaliacao-cardiorespiratoria">Avaliação Cardiorespiratória</a></li>
+  <li><a href="#tab-neuromotor">Neuromotor</a></li>
 </ul>
 
 <div class="tab-content">
@@ -24,8 +27,26 @@
   </div>
 
   <div class="tab-pane" id="tab-perimetro">
-    <%= f.fields_for :perimetros do |perimetro| %>
+    <%= f.simple_fields_for :perimetro, :perimetro do |perimetro| %>
       <%= render 'perimetros/perimetros_form', :f => perimetro %>
+    <% end %>
+  </div>
+
+  <div class="tab-pane" id="tab-composicao-corporal">
+    <%= f.simple_fields_for :composicao_corporal, :composicao_corporal do |composicao_corporal| %>
+      <%= render 'composicoes_corporais/composicoes_corporais_form', :f => composicao_corporal %>
+    <% end %>
+  </div>
+
+  <div class="tab-pane" id="tab-avaliacao-cardiorespiratoria">
+    <%= f.simple_fields_for :avaliacao_cardiorespiratoria, :avaliacao_cardiorespiratoria do |avaliacao_cardiorespiratoria| %>
+      <%= render 'avaliacoes_cardiorespiratorias/avaliacoes_cardiorespiratorias_form', :f => avaliacao_cardiorespiratoria %>
+    <% end %>
+  </div>
+
+  <div class="tab-pane" id="tab-neuromotor">
+    <%= f.simple_fields_for :neuromotor, :neuromotor do |neuromotor| %>
+      <%= render 'neuromotores/neuromotores_form', :f => neuromotor %>
     <% end %>
   </div>
 </div>

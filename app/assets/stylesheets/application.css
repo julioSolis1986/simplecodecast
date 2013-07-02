@@ -1,7 +1,6 @@
 /*
  *= require bibliotecas/reset
 
- *= require bibliotecas/jquery-ui-1.10.3.custom
  *= require bibliotecas/bootstrap
  *= require font-awesome
  *= require postagems
@@ -10,7 +9,7 @@
 
 body {
   text-rendering: optimizelegibility;
-  font-family: 'Open-Sans',Arial,sans-serif;
+  font-size: 13px;
 }
 
 .blue {
@@ -100,9 +99,26 @@ body {
   padding: 0;
   margin: 0;
   border: 0;
-  border-top: 1px solid #fcfcfc;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid #e4e4e4;
   position: relative;
+}
+
+#menu-lateral .nav-list>li.active {
+  font-weight: bold;
+}
+
+#menu-lateral .nav-list>li.active>a>span {
+  font-weight: bold;
+  color: #438eb9;
+}
+
+#menu-lateral .nav-list>li.active>a>i, #menu-lateral .nav-list>li.active>a>b {
+  color: #438eb9;
+}
+
+#menu-lateral .nav-list>li>a:hover {
+  background-color: #fff;
+  border-left: 3px solid #438eb9;
 }
 
 #menu-lateral .nav-list>li>a {
@@ -148,7 +164,11 @@ body {
 }
 
 #menu-lateral .nav-list>li .submenu>li:first-child>a {
-  border-top: 1px solid #fafafa;
+  border-top: 0;
+}
+
+#menu-lateral .nav-list>li .submenu>li:last-child>a {
+  border-bottom: 0;
 }
 
 #menu-lateral .nav-list>li .submenu>li>a {
@@ -158,6 +178,17 @@ body {
   padding: 7px 0 8px 37px;
   margin: 0;
   border-bottom: 1px dotted #e4e4e4;
+  font-size: 12px;
+}
+
+#menu-lateral .nav-list>li .submenu>li>a:hover {
+  color: #438eb9;
+  text-decoration: none;
+}
+
+#menu-lateral .nav-list>li .submenu>li>a.active {
+  border-right: 3px solid #438eb9;
+  color: #438eb9;
 }
 
 /*---------------------------------------------------------
@@ -174,36 +205,80 @@ body {
 
 #main-content #wrapper-conteudo {
   margin: 0;
-	padding: 21px 21px 21px 21px;
+	padding: 0 21px 21px 21px;
 }
 
-#main-content #wrapper-conteudo h1 {
-	margin-bottom: 32px;
+#main-content #wrapper-conteudo .page-header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 12px;
+  padding: 18px 0 0 0;
+  margin-top: 0;
+}
+
+#main-content #wrapper-conteudo .page-header h1 {
+	padding: 0;
+  margin: 0 0 12px 8px;
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: lighter;
+  color: #2679b5;
+  text-align: left;
+}
+
+#main-content #wrapper-conteudo .page-header h2 {
+  padding: 0;
+  margin: 0 0 8px 8px;
+  font-size: 14px;
+  color: #8089a0;
+  text-align: left;
+  line-height: 14px;
+}
+
+#main-content #wrapper-conteudo .table-header h1 {
+  padding: 0;
+  margin: 0 12px 0 0;
+  font-size: 18px;
+  color: #2679b5;
+  font-weight: lighter;
+  text-align: left;
+  display: inline-block;
+}
+
+#main-content #wrapper-conteudo .table-header h1>a {
+  font-weight: lighter;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  color: #8089a0;
+}
+
+#main-content #wrapper-conteudo .table-header h1>a.ativo {
+  color: #2679b5;
 }
 
 #main-content #wrapper-conteudo table.lista-conteudo {
-	margin-top: 32px;
 	width: 100%;
 }
 
 #main-content #wrapper-conteudo table.lista-conteudo thead {
-	border-bottom: 1px solid #e8e8e8;
+	border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
 	line-height: 30px;
 }
 
 #main-content #wrapper-conteudo table.lista-conteudo thead th {
 	text-align: left;
-	text-transform: uppercase;
-	color: #212121;
+  color: #585858;
 }
 
 #main-content #wrapper-conteudo table.lista-conteudo tr {
 	line-height: 30px;
+  border-top: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
 }
 
 #main-content #wrapper-conteudo table.lista-conteudo td {
 	font-size: 12px;
-	text-transform: uppercase;
 	color: #212121;
 }
 
@@ -223,10 +298,6 @@ body {
 /*---------------------------------------------------------
 --------------------------FOOTER---------------------------
 ---------------------------------------------------------*/
-
-footer {
-	background-color: #f3f3f3;
-}
 
 /*---------------------------------------------------------
 --------------------------MODAL----------------------------
@@ -296,4 +367,8 @@ label.checkbox input {
 
 a .icon-plus {
   margin-top: 5px;
+}
+
+.btn {
+  font-size: 13px !important;
 }

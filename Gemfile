@@ -21,6 +21,7 @@ gem 'thin'
 gem 'inherited_resources'
 gem 'brazilian-rails'
 gem 'therubyracer'
+gem 'lazy_high_charts'
 
 #gem "nested_form"
 

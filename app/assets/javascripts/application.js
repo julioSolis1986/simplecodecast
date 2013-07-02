@@ -14,11 +14,15 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require cocoon
+//= require bibliotecas/highcharts
 //= require bibliotecas/bootstrap
 //= require bibliotecas/bootstrap-fileupload
 //= require_tree .
 
 $(document).ready(function() {
+  $( "#menu-lateral" ).accordion({ header: 'a.dropdown-toggle', heightStyle: 'content' });
+  $( "#menu-lateral" ).accordion({active: parseInt($('li.active>a').prop('id').split('-').pop())});
+
 	$('.conteudo-modal').on('click', function() {
 		$.ajax({
 			url: $(this).attr('href'),

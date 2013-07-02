@@ -1,0 +1,21 @@
+<div class="nested-fields">
+  <%= field_set_tag "Força Abdominal" do %>
+    <div class='row-fluid'>
+      <%= f.input :abdominal_repeticoes, :as => :string, :label => 'Repetições', :wrapper_html => { :class => 'span6' } %>
+      <div class='span6'>
+        <%= label_tag :classificao, 'Classificação' %>
+        <%= text_field_tag :classificao, '', { :class => 'span12' } %>
+      </div>
+    </div>
+  <% end %>
+
+  <%= field_set_tag "Flexão de Braço" do %>
+    <div class='row-fluid'>
+      <%= f.input :flexao_repeticoes, :as => :string, :label => 'Repetições', :wrapper_html => { :class => 'span6' } %>
+      <div class='span6'>
+        <%= label_tag :classificao, 'Classificação' %>
+        <%= text_field_tag :classificao, '', { :class => 'span12' } %>
+      </div>
+    </div>
+  <% end %>
+</div>
