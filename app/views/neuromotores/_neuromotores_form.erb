@@ -1,20 +1,40 @@
 <div class="nested-fields">
   <%= field_set_tag "Força Abdominal" do %>
     <div class='row-fluid'>
-      <%= f.input :abdominal_repeticoes, :as => :string, :label => 'Repetições', :wrapper_html => { :class => 'span6' } %>
+      <%= f.input :abdominal_repeticoes, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
+        <%= content_tag :div, :class => 'row-fluid' do %>
+          <%= f.label :abdominal_repeticoes, 'Repetições', :class => "span3" %>
+          <%= f.text_field :abdominal_repeticoes, :class => "span9" %>
+        <% end %>
+      <% end %>
+
       <div class='span6'>
-        <%= label_tag :classificao, 'Classificação' %>
-        <%= text_field_tag :classificao, '', { :class => 'span12' } %>
+        <div class="input-prepend row-fluid">
+          <%= content_tag :div, :class => 'row-fluid' do %>
+            <%= label_tag :classificao, 'Classificação', :class => "span3" %>
+            <%= text_field_tag :classificao, '', { :class => 'span9' } %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
 
   <%= field_set_tag "Flexão de Braço" do %>
     <div class='row-fluid'>
-      <%= f.input :flexao_repeticoes, :as => :string, :label => 'Repetições', :wrapper_html => { :class => 'span6' } %>
+      <%= f.input :flexao_repeticoes, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
+        <%= content_tag :div, :class => 'row-fluid' do %>
+          <%= f.label :flexao_repeticoes, 'Repetições', :class => "span3" %>
+          <%= f.text_field :flexao_repeticoes, :class => "span9" %>
+        <% end %>
+      <% end %>
+
       <div class='span6'>
-        <%= label_tag :classificao, 'Classificação' %>
-        <%= text_field_tag :classificao, '', { :class => 'span12' } %>
+        <div class="input-prepend row-fluid">
+          <%= content_tag :div, :class => 'row-fluid' do %>
+            <%= label_tag :classificao, 'Classificação', :class => "span3" %>
+            <%= text_field_tag :classificao, '', { :class => 'span9' } %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>

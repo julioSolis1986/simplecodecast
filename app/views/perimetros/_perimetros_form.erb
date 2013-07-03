@@ -1,27 +1,49 @@
 <div class="nested-fields">
   <div class="row-fluid">
-    <div class='span6'>
+    <div class='span3'>
       <div class="row-fluid">
         <div class="span12">
           <%= field_set_tag "Perímetros Unilaterais" do %>
           <%= f.simple_fields_for :avaliacao_perimetro, :avaliacao_perimetro do |avaliacao_perimetro| %>
+          <% if avaliacao_perimetro.object.tipo.to_i == 1 %>
           <div class="row-fluid">
-            <%= avaliacao_perimetro.input :valor_1, :as => :string, :label => avaliacao_perimetro.object.nome, :wrapper_html => { :class => 'span12' } if avaliacao_perimetro.object.tipo.to_i == 1 %>
+            <%= avaliacao_perimetro.input :valor_1, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span12' } do %>
+              <%= content_tag :div, :class => 'row-fluid' do %>
+                <%= avaliacao_perimetro.label :valor_1, avaliacao_perimetro.object.nome, :class => "span3" %>
+                <%= avaliacao_perimetro.text_field :valor_1, :class => "span9" %>
+              <% end %>
+            <% end %>
           </div>
+          <% end %>
           <% end %>
           <% end %>
         </div>
       </div>
     </div>
-    <div class='span6'>
+    <div class='span9'>
       <div class="row-fluid">
         <div class="span12">
           <%= field_set_tag "Perímetros Bilaterais" do %>
           <%= f.simple_fields_for :avaliacao_perimetro, :avaliacao_perimetro do |avaliacao_perimetro| %>
-          <div class="row-fluid">
-            <%= avaliacao_perimetro.input :valor_1, :as => :string, :label => avaliacao_perimetro.object.nome, :wrapper_html => { :class => 'span6' } if avaliacao_perimetro.object.tipo.to_i == 2 %>
-            <%= avaliacao_perimetro.input :valor_2, :as => :string, :label => avaliacao_perimetro.object.nome, :wrapper_html => { :class => 'span6' } if avaliacao_perimetro.object.tipo.to_i == 2 %>
-          </div>
+            <% if avaliacao_perimetro.object.tipo.to_i == 2 %>
+            <div class="row-fluid">
+              <%= content_tag :label, avaliacao_perimetro.object.nome, :class => 'span1 line-height-30' %>
+
+              <%= avaliacao_perimetro.input :valor_1, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span5' } do %>
+                <%= content_tag :div, :class => 'row-fluid' do %>
+                  <%= avaliacao_perimetro.label :valor_1, 'Esquerda', :class => "span3" %>
+                  <%= avaliacao_perimetro.text_field :valor_1, :class => "span9" %>
+                <% end %>
+              <% end %>
+
+              <%= avaliacao_perimetro.input :valor_2, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span5' } do %>
+                <%= content_tag :div, :class => 'row-fluid' do %>
+                  <%= avaliacao_perimetro.label :valor_2, 'Direita', :class => "span3" %>
+                  <%= avaliacao_perimetro.text_field :valor_2, :class => "span9" %>
+                <% end %>
+              <% end %>
+            </div>
+            <% end %>
           <% end %>
           <% end %>
         </div>
