@@ -8,11 +8,11 @@ Gerenciador::Application.routes.draw do
   resources :enderecos
   resources :usuarios
   resources :tags
-  resources :postagems
+  resources :postagens
   resources :estados do
   	collection do
         post 'cidades_por_estados'  
     end
   end
-  root :to => redirect('/postagems')
+  root :to => redirect('/postagens')
 end

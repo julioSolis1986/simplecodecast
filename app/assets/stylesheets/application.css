@@ -3,13 +3,14 @@
 
  *= require bibliotecas/bootstrap
  *= require font-awesome
- *= require postagems
+ *= require postagens
  *= require_self
 */
 
 body {
   text-rendering: optimizelegibility;
   font-size: 13px;
+  min-width: 1024px;
 }
 
 .blue {
@@ -20,12 +21,16 @@ body {
   background: #555 !important;
 }
 
+.red {
+  background: #d15b47 !important;
+}
+
 .purple {
   background: #892e65 !important;
 }
 
 .green {
-  background: #2e8965 !important;
+  background: #87b87f !important;
 }
 
 .light-blue {
@@ -74,6 +79,28 @@ body {
 
 #user_info small {
   display: block;
+}
+
+.navbar-inner {
+  border: 0;
+}
+
+.form-search {
+  position: relative;
+}
+
+.form-search .search-query {
+  padding-right: 30px;
+  font-family: 'Open Sans', Calibri, Candara, Arial, sans-serif !important;
+  font-size: 12px;
+}
+
+.form-search .icon-search {
+  color: #8089a0;
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  cursor: pointer;
 }
 
 /*---------------------------------------------------------
@@ -328,6 +355,11 @@ fieldset legend {
   text-align: left;
 }
 
+legend {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
 label {
   font-size: 14px;
   line-height: 20px;
@@ -343,8 +375,32 @@ div.input-prepend label, label.line-height-30 {
   line-height: 30px;
 }
 
+div.fix-width label.width-100 {
+  border-top: 1px solid #bbbbbb;
+  border-left: 1px solid #bbbbbb;
+  border-bottom: 1px solid #bbbbbb;
+
+  background-color: #FAFAFA;
+
+  width: 99px;
+  text-align: center;
+  display: inline-block;
+  padding-right: 0;
+  line-height: 28px
+}
+
+div.fix-width input, div.fix-width select {
+  display: inline-block;
+  width: calc(100% - 100px);
+}
+
 #wrapper #wrapper-conteudo #form-div .form-confirm {
 	float: right;
+}
+
+.input-prepend label {
+  text-align: right;
+  padding-right: 10px;
 }
 
 label.inline {

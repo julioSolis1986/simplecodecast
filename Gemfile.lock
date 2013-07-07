@@ -63,11 +63,16 @@ GEM
     carrierwave (0.8.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
+    client_side_validations (3.2.5)
+    client_side_validations-simple_form (2.1.0)
+      client_side_validations (~> 3.2.5)
+      simple_form (~> 2.1.0)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
       climate_control (>= 0.0.3, < 1.0)
     cocoon (1.1.2)
+    commonjs (0.2.6)
     daemons (1.1.9)
     default_value_for (2.0.3)
     erubis (2.7.0)
@@ -77,6 +82,11 @@ GEM
       multi_json (~> 1.0)
     font-awesome-rails (3.2.1.1)
       railties (>= 3.2, < 5.0)
+    fuelux-rails (2.3.2)
+      actionpack (>= 3.1)
+      execjs
+      less-rails
+      railties (>= 3.1)
     has_scope (0.5.1)
     hash-deep-merge (0.1.1)
     hike (1.2.2)
@@ -100,6 +110,11 @@ GEM
     lazy_high_charts (1.4.2)
       bundler (>= 1.0)
       hash-deep-merge
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -177,9 +192,12 @@ PLATFORMS
 DEPENDENCIES
   brazilian-rails
   carrierwave
+  client_side_validations
+  client_side_validations-simple_form
   cocoon
   default_value_for
   font-awesome-rails
+  fuelux-rails
   inherited_resources
   jquery-rails
   jquery-ui-rails

@@ -1,4 +1,4 @@
-<%= simple_form_for @avaliacao_fisica, :html => { :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
+<%= simple_form_for @avaliacao_fisica, :validate => true, :html => { :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
 <%= f.input :clientes_id, :as => :hidden, :input_html => { :value => @clientes_id } %>
 
 <% if @avaliacao_fisica.errors.any? %>
@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="btn-group navigation-modal form-confirm">
+<div class="btn-group navigation-modal form-confirm pull-right">
   <%= link_to 'Voltar', avaliacao_fisicas_path, :class => 'btn' %>
   <%= f.submit :class => 'btn btn-primary' %>
 </div>

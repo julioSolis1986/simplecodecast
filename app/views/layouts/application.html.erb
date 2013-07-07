@@ -10,7 +10,7 @@
 <body>
   <div class='navbar navbar-inverse sem-margem'>
     <div class='navbar-inner navbar-inverse blue'>
-      <a class="brand" href="#">eonGym</a>
+      <a class="brand" href="#"><i class='icon-cloud'></i>  <b>eonGym</b></a>
       <div class="nav-collapse">
         <!-- <ul class="nav">
           <li class="active"><a href="#">Home</a></li>
@@ -94,7 +94,7 @@
           </ul>
         </li>
 
-        <li <%= html_current_controller?('postagems') %>>
+        <li <%= html_current_controller?('postagens') %>>
           <a href="#" class="dropdown-toggle">
             <i class="icon-edit"></i>
             <span>Conteúdos</span>
@@ -103,7 +103,7 @@
 
           <ul class="submenu" style="display: block;">
             <li>
-              <%= link_to postagems_path, :class => current_controller?('postagems') do %>
+              <%= link_to postagens_path, :class => current_controller?('postagens') do %>
                 Postagens
               <% end %>
             </li>

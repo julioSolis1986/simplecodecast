@@ -1,13 +1,4 @@
-<%= simple_form_for @cliente, :html => { :multipart => true, :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
-<% if @cliente.errors.any? %>
-<div id="error_explanation">
-  <ul>
-    <% @cliente.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-</div>
-<% end %>
+<%= simple_form_for @cliente, :validate => true, :html => { :multipart => true, :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
 
 <ul class="nav nav-tabs" id="tabs">
   <li class="active"><a href="#tab-dados-basicos">Dados Básicos</a></li>
@@ -19,7 +10,7 @@
   <div class="tab-pane active" id="tab-dados-basicos">
     <div class="row-fluid">
       <%= f.input :nome, :wrapper_html => { :class => 'span6' } %>
-      <%= f.input :data_nascimento, :as => :string, :input_html => { :alt => 'datepicker' }, :wrapper_html => { :class => 'span3' } %>
+      <%= f.input :data_nascimento, :as => :string, :input_html => { :alt => 'datepicker' }, :wrapper_html => { :class => 'span3' }, :validate => { :presence => true, :uniqueness => false } %>
       <%= f.input :sexo_id, :collection => Sexo.all.map{ |p| [p.nome, p.id] }, :wrapper_html => { :class => 'span3' } %>
     </div>
 
@@ -32,37 +23,37 @@
 
   <div class="tab-pane" id="tab-enderecos">
     <div class='tab-nested' id="enderecos_field">
-      <%= f.fields_for :enderecos do |endereco| %>
+      <%= f.simple_fields_for :enderecos, :enderecos do |endereco| %>
         <%= render 'enderecos/enderecos_form', f, :endereco %>
-      <% end %>  
+      <% end %>
 
-      <%= link_to_add_association "Novo Endereço", f, :enderecos, :partial => 'enderecos/enderecos_form', :class => 'btn btn-success btn-block' %>
+      <%= link_to_add_association "Novo Endereço", f, :enderecos, :partial => 'enderecos/enderecos_form', :class => 'btn btn-success btn-block green' %>
     </div>
   </div>
 
   <div class="tab-pane" id="tab-contatos">
-    <div>    
+    <div>
       <div class='tab-nested' id="emails_field">
-        <%= f.fields_for :emails do |email| %>
+        <%= f.simple_fields_for :emails, :emails do |email| %>
         <%= render 'emails/emails_form', f, :email %>
-        <% end %>  
+        <% end %>
 
-        <%= link_to_add_association "Novo E-mail", f, :emails, :partial => 'emails/emails_form', :class => 'btn btn-success btn-block' %>
+        <%= link_to_add_association "Novo E-mail", f, :emails, :partial => 'emails/emails_form', :class => 'btn btn-success btn-block green' %>
       </div>
     </div>
     <div>
       <div class='tab-nested' id="telefones_field">
-        <%= f.fields_for :telefones do |telefone| %>
+        <%= f.simple_fields_for :telefones, :telefones do |telefone| %>
         <%= render 'telefones/telefones_form', f, :telefone %>
-        <% end %>  
+        <% end %>
 
-        <%= link_to_add_association "Novo Telefone", f, :telefones, :partial => 'telefones/telefones_form', :class => 'btn btn-success btn-block' %>
+        <%= link_to_add_association "Novo Telefone", f, :telefones, :partial => 'telefones/telefones_form', :class => 'btn btn-success btn-block green' %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="btn-group navigation-modal form-confirm">
+<div class="btn-group navigation-modal form-confirm pull-right">
   <%= link_to 'Voltar', clientes_path, :class => 'btn' %>
   <%= f.submit :class => 'btn btn-primary' %>
 </div>

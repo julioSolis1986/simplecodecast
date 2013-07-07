@@ -9,14 +9,14 @@
     <div class='row-fluid'>
       <%= f.input :distancia_total, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
         <%= content_tag :div, :class => 'row-fluid' do %>
-          <%= f.label :distancia_total, 'Distância Total Percorrida', :class => "span3" %>
-          <%= f.text_field :distancia_total, :class => "span9" %>
+          <%= f.label :distancia_total, 'Distância Total Percorrida', :class => "span5" %>
+          <%= f.text_field :distancia_total, :class => "span7" %>
         <% end %>
       <% end %>
       <%= f.input :freq_cardiaca_maxima, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
         <%= content_tag :div, :class => 'row-fluid' do %>
-          <%= f.label :freq_cardiaca_maxima, 'Freq. Cardíaca Máxima', :class => "span3" %>
-          <%= f.text_field :freq_cardiaca_maxima, :class => "span9" %>
+          <%= f.label :freq_cardiaca_maxima, 'Freq. Cardíaca Máxima', :class => "span5" %>
+          <%= f.text_field :freq_cardiaca_maxima, :class => "span7" %>
         <% end %>
       <% end %>
     </div>
@@ -27,16 +27,16 @@
       <div class='span6'>
         <div class="input-prepend row-fluid">
           <%= content_tag :div, :class => 'row-fluid' do %>
-            <%= label_tag :classificao, 'Classificação', :class => "span3" %>
-            <%= text_field_tag :classificao, '', { :class => 'span9' } %>
+            <%= label_tag :classificao, 'Classificação', :class => "span5" %>
+            <%= text_field_tag :classificao, '', { :class => 'span7' } %>
           <% end %>
         </div>
       </div>
       <div class='span6'>
         <div class="input-prepend row-fluid">
           <%= content_tag :div, :class => 'row-fluid' do %>
-            <%= label_tag :vo2_maximo, 'VO2 Máximo', :class => "span3" %>
-            <%= text_field_tag :vo2_maximo, '', { :class => 'span9' } %>
+            <%= label_tag :vo2_maximo, 'VO2 Máximo', :class => "span5" %>
+            <%= text_field_tag :vo2_maximo, '', { :class => 'span7' } %>
           <% end %>
         </div>
       </div>

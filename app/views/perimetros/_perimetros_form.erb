@@ -9,10 +9,12 @@
           <div class="row-fluid">
             <%= avaliacao_perimetro.input :valor_1, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span12' } do %>
               <%= content_tag :div, :class => 'row-fluid' do %>
-                <%= avaliacao_perimetro.label :valor_1, avaliacao_perimetro.object.nome, :class => "span3" %>
-                <%= avaliacao_perimetro.text_field :valor_1, :class => "span9" %>
+                <%= avaliacao_perimetro.label :valor_1, avaliacao_perimetro.object.nome, :class => "span4" %>
+                <%= avaliacao_perimetro.text_field :valor_1, :class => "span8" %>
               <% end %>
             <% end %>
+            <%= avaliacao_perimetro.input :tipo, :value => avaliacao_perimetro.object.tipo,:as => :hidden %>
+            <%= avaliacao_perimetro.input :nome, :value => avaliacao_perimetro.object.nome,:as => :hidden %>
           </div>
           <% end %>
           <% end %>
@@ -31,17 +33,20 @@
 
               <%= avaliacao_perimetro.input :valor_1, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span5' } do %>
                 <%= content_tag :div, :class => 'row-fluid' do %>
-                  <%= avaliacao_perimetro.label :valor_1, 'Esquerda', :class => "span3" %>
-                  <%= avaliacao_perimetro.text_field :valor_1, :class => "span9" %>
+                  <%= avaliacao_perimetro.label :valor_1, 'Esquerda', :class => "span4" %>
+                  <%= avaliacao_perimetro.text_field :valor_1, :class => "span8" %>
                 <% end %>
               <% end %>
 
               <%= avaliacao_perimetro.input :valor_2, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span5' } do %>
                 <%= content_tag :div, :class => 'row-fluid' do %>
-                  <%= avaliacao_perimetro.label :valor_2, 'Direita', :class => "span3" %>
-                  <%= avaliacao_perimetro.text_field :valor_2, :class => "span9" %>
+                  <%= avaliacao_perimetro.label :valor_2, 'Direita', :class => "span4" %>
+                  <%= avaliacao_perimetro.text_field :valor_2, :class => "span8" %>
                 <% end %>
               <% end %>
+
+              <%= avaliacao_perimetro.input :tipo, :value => avaliacao_perimetro.object.tipo,:as => :hidden %>
+              <%= avaliacao_perimetro.input :nome, :value => avaliacao_perimetro.object.nome,:as => :hidden %>
             </div>
             <% end %>
           <% end %>

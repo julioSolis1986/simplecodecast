@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class PostagemsControllerTest < ActionController::TestCase
+class PostagensControllerTest < ActionController::TestCase
   setup do
-    @postagem = postagems(:one)
+    @postagem = postagens(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:postagems)
+    assert_not_nil assigns(:postagens)
   end
 
   test "should get new" do
@@ -44,6 +44,6 @@ class PostagemsControllerTest < ActionController::TestCase
       delete :destroy, id: @postagem
     end
 
-    assert_redirected_to postagems_path
+    assert_redirected_to postagens_path
   end
 end

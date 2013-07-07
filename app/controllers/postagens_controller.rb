@@ -1,10 +1,10 @@
-class PostagemsController < ApplicationController
+class PostagensController < ApplicationController
   def index
-    @postagems = Postagem.paginate(:page => params[:page], :per_page => 10)
+    @postagens = Postagem.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html
-      format.json { render json: @postagems }
+      format.json { render json: @postagens }
     end
   end
 
@@ -62,7 +62,7 @@ class PostagemsController < ApplicationController
     @postagem.destroy
 
     respond_to do |format|
-      format.html { redirect_to postagems_url }
+      format.html { redirect_to postagens_url }
       format.json { head :no_content }
     end
   end

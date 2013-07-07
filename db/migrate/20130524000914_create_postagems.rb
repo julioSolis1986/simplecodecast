@@ -1,6 +1,6 @@
-class CreatePostagems < ActiveRecord::Migration
+class CreatePostagens < ActiveRecord::Migration
   def up
-    create_table :postagems do |t|
+    create_table :postagens do |t|
       t.string :titulo
       t.text :conteudo
       t.boolean :status
@@ -10,6 +10,6 @@ class CreatePostagems < ActiveRecord::Migration
   end
 
   def down
-  	drop_table :postagems
+  	drop_table :postagens
   end
 end

@@ -7,7 +7,7 @@ class Perimetro < ActiveRecord::Base
   after_initialize :build_perimetros
 
   def build_perimetros
-    if self.new_record?
+    if self.avaliacao_perimetro.blank?
       self.avaliacao_perimetro.build(:tipo => '1', :nome => 'Tórax')
       self.avaliacao_perimetro.build(:tipo => '1', :nome => 'Cintura')
       self.avaliacao_perimetro.build(:tipo => '1', :nome => 'Abdomen')

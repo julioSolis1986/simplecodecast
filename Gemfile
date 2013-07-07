@@ -22,6 +22,9 @@ gem 'inherited_resources'
 gem 'brazilian-rails'
 gem 'therubyracer'
 gem 'lazy_high_charts'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+gem "fuelux-rails"
 
 #gem "nested_form"
 
