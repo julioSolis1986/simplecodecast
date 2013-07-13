@@ -15,8 +15,8 @@
   <li class="active"><a href="#tab-anamnese">Anamnese</a></li>
   <li><a href="#tab-perimetro">Perímetros</a></li>
   <li><a href="#tab-composicao-corporal">Composição Corporal</a></li>
-  <li><a href="#tab-avaliacao-cardiorespiratoria">Avaliação Cardiorespiratória</a></li>
   <li><a href="#tab-neuromotor">Neuromotor</a></li>
+  <li><a href="#tab-avaliacao-cardiorespiratoria">Avaliação Cardiorespiratória</a></li>
 </ul>
 
 <div class="tab-content">
@@ -38,15 +38,15 @@
     <% end %>
   </div>
 
-  <div class="tab-pane" id="tab-avaliacao-cardiorespiratoria">
-    <%= f.simple_fields_for :avaliacao_cardiorespiratoria, :avaliacao_cardiorespiratoria do |avaliacao_cardiorespiratoria| %>
-      <%= render 'avaliacoes_cardiorespiratorias/avaliacoes_cardiorespiratorias_form', :f => avaliacao_cardiorespiratoria %>
-    <% end %>
-  </div>
-
   <div class="tab-pane" id="tab-neuromotor">
     <%= f.simple_fields_for :neuromotor, :neuromotor do |neuromotor| %>
       <%= render 'neuromotores/neuromotores_form', :f => neuromotor %>
+    <% end %>
+  </div>
+
+  <div class="tab-pane" id="tab-avaliacao-cardiorespiratoria">
+    <%= f.simple_fields_for :avaliacao_cardiorespiratoria, :avaliacao_cardiorespiratoria do |avaliacao_cardiorespiratoria| %>
+      <%= render 'avaliacoes_cardiorespiratorias/avaliacoes_cardiorespiratorias_form', :f => avaliacao_cardiorespiratoria %>
     <% end %>
   </div>
 </div>
@@ -56,3 +56,6 @@
   <%= f.submit :class => 'btn btn-primary' %>
 </div>
 <% end %>
+
+<input type='hidden' id='aluno_idade' value='<%= @cliente.idade %>' >
+<input type='hidden' id='aluno_sexo' value='<%= @cliente.sexo.nome %>' >

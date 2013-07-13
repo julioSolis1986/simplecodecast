@@ -28,14 +28,14 @@
   <table class="lista-conteudo">
     <thead>
       <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Nome</th>
-      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Login</th>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> E-mail</th>
       <th></th>
     </thead>
 
   <% @usuarios.each do |usuario| %>
     <tr>
       <td><%= link_to usuario.nome, usuario, :class => 'conteudo-modal' %></td>
-      <td><%= link_to usuario.login, usuario, :class => 'conteudo-modal' %></td>
+      <td><%= link_to usuario.email, usuario, :class => 'conteudo-modal' %></td>
       <td class='comando'><%= link_to 'Excluir', usuario, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
     </tr>
   <% end %>

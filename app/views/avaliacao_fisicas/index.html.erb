@@ -8,22 +8,29 @@
   <div class="alert alert-success"><%= params['notice'] %></div>
   <% end %>
 
-  <% @clientes.each do |cliente| %>
-    <h4><%= cliente.nome %> <%= link_to raw('<i class="icon-plus"></i>'), new_avaliacao_fisica_path(:clientes_id => cliente.id) %></h4>
-    <table class="lista-conteudo">
-      <thead>
-        <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Data</th>
-        <th></th>
-      </thead>
-
-    <% cliente.avaliacao_fisicas.each do |avaliacao_fisica| %>
-      <tr>
-        <td><%= link_to avaliacao_fisica.created_at, avaliacao_fisica, :class => 'conteudo-modal' %></td>
-        <td class='comando'><%= link_to 'Excluir', avaliacao_fisica, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+  <table class="lista-conteudo">
+    <thead>
+      <th colspan='2'><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Aluno</th>
+      <th></th>
+    </thead>
+    <% @clientes.each do |cliente| %>
+    <tbody class='cliente'>
+      <tr style='background-color: #FFF;'>
+        <td colspan='2'><%= cliente.nome %> <%= link_to raw('<i class="icon-plus"></i>'), new_avaliacao_fisica_path(:clientes_id => cliente.id) %></td>
+        <td></td>
       </tr>
+    </tbody>
+    <tbody class='avaliacao'>
+      <% cliente.avaliacao_fisicas.each do |avaliacao_fisica| %>
+        <tr>
+          <td><input type='checkbox'></td>
+          <td><%= link_to avaliacao_fisica.created_at, avaliacao_fisica, :class => 'conteudo-modal' %></td>
+          <td class='comando'><%= link_to 'Excluir', avaliacao_fisica, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
     <% end %>
-    </table>
-  <% end %>
+  </table>
 
   <br />
 

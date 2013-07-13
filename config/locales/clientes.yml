@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    models:
+      'cliente': 'Cliente'
+    attributes:
+      'cliente':
+        nome: 'Nome'
+        cpf: 'CPF'
+        rg: 'RG'
+        sexo_id: 'Sexo'
+        data_nascimento: 'Data de Nascimento'
+        estado_civil_id: 'Estado Civil'
+        etnia_id: 'Etnia'
+        observacoes: 'Observações'
+
+    clientes:
+      index:
+        title: 'Clientes'
+      new:
+        title: 'Novo Cliente'
+      edit:
+        title: 'Edição de Cliente'
+      show:
+        title: 'Cliente'

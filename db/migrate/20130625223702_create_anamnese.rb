@@ -13,9 +13,6 @@ class CreateAnamnese < ActiveRecord::Migration
       t.string :pergunta_3_05
       t.string :pergunta_3_06
       t.string :pergunta_3_07
-      t.string :pergunta_3_08
-      t.string :pergunta_3_09
-      t.string :pergunta_3_10
 
       t.text :resposta_1_01
 
@@ -29,9 +26,6 @@ class CreateAnamnese < ActiveRecord::Migration
       t.boolean :resposta_3_05
       t.boolean :resposta_3_06
       t.boolean :resposta_3_07
-      t.boolean :resposta_3_08
-      t.boolean :resposta_3_09
-      t.boolean :resposta_3_10
       t.references :avaliacao_fisica
 
       t.timestamps

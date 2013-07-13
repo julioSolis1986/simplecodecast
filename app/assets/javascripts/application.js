@@ -14,39 +14,36 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require cocoon
-//= require rails.validations
-//= require rails.validations.simple_form
-//= require fuelux
 //= require bibliotecas/highcharts
 //= require bibliotecas/bootstrap
 //= require bibliotecas/bootstrap-fileupload
 //= require_tree .
 
 $(document).ready(function() {
-  if($(window).width() < 1200) {
-      $('#menu-lateral').hide();
+  // if($(window).width() < 1200) {
+  //     $('#menu-lateral').hide();
 
-      $('#main-content').css({'margin-left': 0});
-    }
+  //     $('#main-content').css({'margin-left': 0});
+  //   }
 
-  $(window).resize(function() {
-    if($(window).width() < 1200) {
-      $('#menu-lateral').stop().animate({width: 0},600, function(){
-        $('#menu-lateral').hide();
-      });
+  // $(window).resize(function() {
+  //   if($(window).width() < 1200) {
+  //     $('#menu-lateral').stop().animate({width: 0},600, function(){
+  //       $('#menu-lateral').hide();
+  //     });
 
-      $('#main-content').stop().animate({'margin-left': 0},600);
-    }
-    else {
-      if($('#menu-lateral').width() == 0) {
-        $('#menu-lateral').show();
+  //     $('#main-content').stop().animate({'margin-left': 0},600);
+  //   }
+  //   else {
+  //     if($('#menu-lateral').width() == 0) {
+  //       $('#menu-lateral').show();
 
-        $('#menu-lateral').stop().animate({width: 189},600);
+  //       $('#menu-lateral').stop().animate({width: 189},600);
 
-        $('#main-content').stop().animate({'margin-left': 189},600);
-        }
-    }
-  })
+  //       $('#main-content').stop().animate({'margin-left': 189},600);
+  //       }
+  //   }
+  // })
 
   $( "#menu-lateral" ).accordion({ header: 'a.dropdown-toggle', heightStyle: 'content' });
   $( "#menu-lateral" ).accordion({active: parseInt($('li.active>a').prop('id').split('-').pop())});

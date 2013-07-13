@@ -1,94 +1,67 @@
-<%= simple_form_for @usuario, :html => { :multipart => true, :class => 'form-inline' } do |f| %>
-  <% if @usuario.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-      <% @usuario.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for @usuario, :validate => true, :html => { :multipart => true, :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
 
-<ul class="nav nav-tabs" id="tabs">
-  <li class="active"><a href="#tab-dados-basicos">Dados Básicos</a></li>
-  <li><a href="#tab-enderecos">Endereços</a></li>
-  <li><a href="#tab-contatos">Contatos</a></li>
-</ul>
-
-<div class="tab-content">
-  <div class="tab-pane active" id="tab-dados-basicos">
-    <div class="row-fluid">
-      <%= f.input :nome, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span8' } do %>
-        <%= f.label :nome, :class => "add-on" %>
-        <%= f.text_field :nome %>
-      <% end %>
-
-      <%= f.input :data_nascimento, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span4' } do %>
-        <%= f.label :data_nascimento, :class => "add-on" %>
-        <%= f.text_field :data_nascimento %>
-      <% end %>
-    </div>
-
-    <div class="row-fluid">
-      <%= f.input :login, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
-        <%= f.label :login, :class => "add-on" %>
-        <%= f.text_field :login %>
-      <% end %>
-
-      <%= f.input :senha, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
-        <%= f.label :senha, :class => "add-on" %>
-        <%= f.text_field :senha %>
-      <% end %>
-    </div>
-
-    <fieldset>
-      <legend>Avatar</legend>
-      <div class='row-fluid'>
-        <div class="fileupload fileupload-new" data-provides="fileupload">
-          <span class="btn btn-file btn-block span12"><span class="fileupload-new">Selecione um Arquivo</span><span class="fileupload-exists">Alterar</span><%= f.file_field :avatar %></span>
-          <span class="fileupload-preview"></span>
-          <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-        </div>
-      </div>
-    </fieldset>
+<%= field_set_tag 'Dados Básicos' do %>
+  <div class="row-fluid">
+    <%= f.input :nome, :wrapper_html => { :class => 'span6' } %>
+    <%= f.input :data_nascimento, :as => :string, :input_html => { :alt => 'datepicker' }, :wrapper_html => { :class => 'span3' }, :validate => { :presence => true, :uniqueness => false } %>
+    <%= f.input :sexo_id, :collection => Sexo.all.map{ |p| [p.nome, p.id] }, :wrapper_html => { :class => 'span3' } %>
   </div>
 
-  <div class="tab-pane" id="tab-enderecos">
-    <div class='tab-nested' id="enderecos_field">
-      <%= f.fields_for :enderecos do |endereco| %>
-          <%= render 'enderecos/enderecos_form', f, :endereco %>
-      <% end %>  
-
-      <div class='row-fluid'>
-        <%= link_to_add_association "Novo Endereço", f, :enderecos, :partial => 'enderecos/enderecos_form', :class => 'btn btn-block span12' %>
-      </div>
-    </div>
+  <div class="row-fluid">
+    <%= f.input :login, :wrapper_html => { :class => 'span12' } %>
   </div>
 
-  <div class="tab-pane" id="tab-contatos">      
+  <div class='row-fluid tab-nested'>
+  <%= f.input :senha, :wrapper_html => { :class => 'span6' } %>
+    <div class='span6'>
+    <%= label_tag :senha2, 'Repita sua Senha' %>
+    <%= text_field_tag :senha2, '', {:class => 'input-block-level'} %>
+    </div>
+  </div>
+<% end %>
+
+<%= field_set_tag 'Avatar' do %>
+  <div class='row-fluid'>
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+      <span class="btn btn-file btn-block span12"><span class="fileupload-new">Selecione um Arquivo</span><span class="fileupload-exists">Alterar</span><%= f.file_field :avatar %></span>
+      <span class="fileupload-preview"></span>
+      <a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
+    </div>
+  </div>
+<% end %>
+
+<%= field_set_tag 'Endereço' do %>
+  <div class='tab-nested' id="enderecos_field">
+    <%= f.simple_fields_for :enderecos do |endereco| %>
+      <%= render 'enderecos/enderecos_form', f, :endereco %>
+    <% end %>
+
+    <%= link_to_add_association "Novo Endereço", f, :enderecos, :partial => 'enderecos/enderecos_form', :class => 'btn btn-success btn-block green' %>
+  </div>
+<% end %>
+
+<%= field_set_tag 'Contato' do %>
+  <div>
     <div class='tab-nested' id="emails_field">
-      <%= f.fields_for :emails do |email| %>
-          <%= render 'emails/emails_form', f, :email %>
-      <% end %>  
+      <%= f.simple_fields_for :emails do |email| %>
+      <%= render 'emails/emails_form', f, :email %>
+      <% end %>
 
-      <div class='row-fluid'>
-        <%= link_to_add_association "Novo E-mail", f, :emails, :partial => 'emails/emails_form', :class => 'btn btn-block span12' %>
-      </div>
-    </div>
-
-    <div class='tab-nested' id="telefones_field">
-      <%= f.fields_for :telefones do |telefone| %>
-          <%= render 'telefones/telefones_form', f, :telefone %>
-      <% end %>  
-
-      <div class='row-fluid'>
-        <%= link_to_add_association "Novo Telefone", f, :telefones, :partial => 'telefones/telefones_form', :class => 'btn btn-block span12' %>
-      </div>
+      <%= link_to_add_association "Novo E-mail", f, :emails, :partial => 'emails/emails_form', :class => 'btn btn-success btn-block green' %>
     </div>
   </div>
-</div>
+  <div>
+    <div class='tab-nested' id="telefones_field">
+      <%= f.simple_fields_for :telefones do |telefone| %>
+      <%= render 'telefones/telefones_form', f, :telefone %>
+      <% end %>
 
-<div class="btn-group navigation-modal form-confirm">
+      <%= link_to_add_association "Novo Telefone", f, :telefones, :partial => 'telefones/telefones_form', :class => 'btn btn-success btn-block green' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="btn-group navigation-modal form-confirm pull-right">
   <%= link_to 'Voltar', usuarios_path, :class => 'btn' %>
   <%= f.submit :class => 'btn btn-primary' %>
 </div>

@@ -17,4 +17,11 @@ class Cliente < ActiveRecord::Base
 
  	has_many :emails, :as => :emaiable
   	accepts_nested_attributes_for :emails
+
+  def idade
+    hoje = Date.today
+    idade = hoje.year - data_nascimento.year
+    idade -= 1 if data_nascimento.strftime("%m%d").to_i > hoje.strftime("%m%d").to_i
+    idade
+  end
 end

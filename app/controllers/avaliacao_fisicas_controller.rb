@@ -6,7 +6,7 @@ class AvaliacaoFisicasController < InheritedResources::Base
 
   def new
     new! do |format|
-      @clientes_id = params['clientes_id']
+      @cliente = Cliente.find(params['clientes_id'])
       @avaliacao_fisica.build_anamneses
       @avaliacao_fisica.build_perimetro
       @avaliacao_fisica.build_composicao_corporal

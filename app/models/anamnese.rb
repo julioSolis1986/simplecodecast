@@ -9,16 +9,13 @@ class Anamnese < ActiveRecord::Base
       self.pergunta_2_01 = 'Pratica atualmente algum tipo de atividade física?'
       self.pergunta_2_02 = 'Praticou algum tipo de atividade física no passado?'
 
-      self.pergunta_3_01 = 'Doenças na família nos últimos anos?'
-      self.pergunta_3_02 = 'Doenças pessoais nos últimos anos?'
-      self.pergunta_3_03 = 'Possui alguma restrição à prática de atividade física?'
-      self.pergunta_3_04 = 'Foi submetido à algum tipo de cirurgia?'
-      self.pergunta_3_05 = 'Possui algum tipo de alergia?'
-      self.pergunta_3_06 = 'Sofreu algum acidente ou lesão osteo-muscular?'
-      self.pergunta_3_07 = 'Utiliza algum tipo de medicamento?'
-      self.pergunta_3_08 = 'Ultimamente tem sentido dores no corpo?'
-      self.pergunta_3_09 = 'Tem ou teve o hábito de fumar?'
-      self.pergunta_3_10 = 'Está em dieta para perder ou ganhar peso?'
+      self.pergunta_3_01 = 'Seu médico já mencionou alguma vez que você tem uma condição cardíaca e que você só deve realizar atividade física recomendada por um médico?'
+      self.pergunta_3_02 = 'Você sente dor no tórax quando realiza atividade física?'
+      self.pergunta_3_03 = 'No mês passado, você teve dor torácica quando não estava realizando atividade física?'
+      self.pergunta_3_04 = 'Você perdeu o equilíbrio por causa de tontura ou alguma vez perdeu a consciência?'
+      self.pergunta_3_05 = 'Você tem algum problema ósseo ou de articulação que poderia piorar em consequência de uma alteração em sua atividade física?'
+      self.pergunta_3_06 = 'Seu médico está prescrevendo medicamentos para sua pressão ou condição cardíaca?'
+      self.pergunta_3_07 = 'Você conhece alguma outra razão que o impeça de realizar atividade física?'
     end
   end
 end

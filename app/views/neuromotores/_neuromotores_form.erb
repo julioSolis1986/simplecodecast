@@ -12,7 +12,7 @@
         <div class="input-prepend row-fluid">
           <%= content_tag :div, :class => 'row-fluid' do %>
             <%= label_tag :classificao, 'Classificação', :class => "span5" %>
-            <%= text_field_tag :classificao, '', { :class => 'span7' } %>
+            <%= text_field_tag :classificacao_abdominal, '', { :class => 'span7', :disabled => true } %>
           <% end %>
         </div>
       </div>
@@ -32,7 +32,7 @@
         <div class="input-prepend row-fluid">
           <%= content_tag :div, :class => 'row-fluid' do %>
             <%= label_tag :classificao, 'Classificação', :class => "span5" %>
-            <%= text_field_tag :classificao, '', { :class => 'span7' } %>
+            <%= text_field_tag :classificacao_flexao, '', { :class => 'span7', :disabled => true } %>
           <% end %>
         </div>
       </div>

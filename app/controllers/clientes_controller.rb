@@ -17,8 +17,4 @@ class ClientesController < InheritedResources::Base
 
     render :layout => false
   end
-
-  def create
-    super
-  end
 end

@@ -1,17 +1,11 @@
 class Usuario < ActiveRecord::Base
-  belongs_to :endereco
-  belongs_to :telefone
-  belongs_to :email
-  attr_accessible :data_nascimento, :login, :nome, :senha, :avatar, :enderecos_attributes, :telefone, :email
-  
-  has_many :enderecos, :as => :enderecable
-  accepts_nested_attributes_for :enderecos
-  
-  has_many :telefones, :as => :telefonable
-  accepts_nested_attributes_for :telefones
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :emails, :as => :emaiable
-  accepts_nested_attributes_for :emails
-
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :nome
+  # attr_accessible :title, :body
 end
