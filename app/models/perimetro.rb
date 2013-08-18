@@ -2,7 +2,7 @@
 class Perimetro < ActiveRecord::Base
   belongs_to :avaliacao_fisica
   has_many :avaliacao_perimetro, :foreign_key => :perimetros_id
-  accepts_nested_attributes_for :avaliacao_perimetro
+  accepts_nested_attributes_for :avaliacao_perimetro, :reject_if => :all_blank
 
   after_initialize :build_perimetros
 

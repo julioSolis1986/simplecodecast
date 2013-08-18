@@ -1,20 +1,26 @@
 /*
- *= require bibliotecas/reset
-
+ *= require bibliotecas/jquery-ui-1.10.3.custom
  *= require bibliotecas/bootstrap
+ *= require bibliotecas/bootstrap-responsive
+ *= require bibliotecas/bootstrap-tagmanager
+ *= require bibliotecas/jasny-bootstrap
+ *= require bibliotecas/jasny-bootstrap-responsive
  *= require font-awesome
  *= require postagens
+ *= require fichas
+ *= require exercicios
  *= require_self
 */
 
 body {
   text-rendering: optimizelegibility;
   font-size: 13px;
-  min-width: 1024px;
+  /*min-width: 1024px;*/
 }
 
 .blue {
   background: #438eb9 !important;
+  color: #FFF !important;
 }
 
 .grey {
@@ -31,14 +37,48 @@ body {
 
 .green {
   background: #87b87f !important;
+  color: #FFF !important;
 }
 
 .light-blue {
   background: #62a8d1 !important;
 }
 
+.light-blue-color {
+  color: #62a8d1 !important;
+}
+
+.white-color {
+  color: #FFFFFF !important;
+}
+
+.middle-screen-wrapper {
+  position: absolute;
+
+  height: 431px;
+  width: 1000px;
+
+  top: 50%;
+  left: 50%;
+
+  margin-left: -550px;
+  margin-top: -265px;
+
+  padding: 50px;
+
+  background-color: #FFFFFF;
+}
+
+.middle-screen {
+  height: 100%
+}
+
 .sem-margem {
   margin: 0 0 0 0 !important;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0 !important;
 }
 
 .shang-nav .nav-user-photo {
@@ -55,6 +95,28 @@ body {
 .shang-nav>li {
   position: relative;
   height: 52px;
+}
+
+.navbar .btn-navbar {
+  line-height: 20px;
+  padding: 15px 15px 15px;
+  margin: 0;
+}
+
+.navbar-inverse .nav-collapse .nav > li > a {
+  color: #FFF;
+}
+
+.navbar-inverse .in.collapse  a {
+  color: #FFF !important;
+}
+
+.navbar-inverse .nav-collapse .dropdown-menu a {
+  color: #8089a0;
+}
+
+.navbar-inverse .nav-collapse .dropdown-menu a:hover {
+  color: #FFF;
 }
 
 .user-menu {
@@ -227,7 +289,7 @@ body {
 }
 
 #main-content {
-  margin-left: 189px;
+  /*margin-left: 189px;*/
 }
 
 #main-content #wrapper-conteudo {
@@ -244,7 +306,7 @@ body {
 
 #main-content #wrapper-conteudo .page-header h1 {
 	padding: 0;
-  margin: 0 0 12px 8px;
+  margin: 0 0 12px 0;
   font-size: 24px;
   line-height: 24px;
   font-weight: lighter;
@@ -254,7 +316,7 @@ body {
 
 #main-content #wrapper-conteudo .page-header h2 {
   padding: 0;
-  margin: 0 0 8px 8px;
+  margin: 0 0 8px 0;
   font-size: 14px;
   color: #8089a0;
   text-align: left;
@@ -345,6 +407,12 @@ body {
 
 fieldset {
   min-width: 0 !important;
+  margin-bottom: 20px;
+}
+
+fieldset.border-bottom {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 fieldset legend {
@@ -449,6 +517,10 @@ label.inline {
 	margin-top: 25px;
 }
 
+.btn-remove.sem-margem-top {
+  margin-top: 0;
+}
+
 label.checkbox input {
   margin-top: -5px;
 }
@@ -459,4 +531,103 @@ a .icon-plus {
 
 .btn {
   font-size: 13px !important;
+}
+
+.width-100-percent {
+  width: 100%;
+}
+
+.imagem-inline-block {
+  margin-right: 20px;
+  display: inline-block !important;
+}
+
+.clearboth {
+  clear: both;
+}
+
+.form-search {
+  margin: 4px 0 0 0;
+}
+
+/*---------------------------------------------------------
+--------------------------FORM-----------------------------
+---------------------------------------------------------*/
+
+#fuelux-wizard {
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.wizard-steps {
+  list-style: none;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+
+.wizard-steps li {
+  display: block;
+  text-align: center;
+  float: left;
+}
+
+.wizard-steps li.active:before, .wizard-steps li.complete:before, .wizard-steps li.active .step, .wizard-steps li.complete .step {
+  border-color: #5293c4;
+}
+
+.wizard-steps li:first-child:before {
+  max-width: 51%;
+  left: 50%;
+}
+
+.wizard-steps li:last-child:before {
+  max-width: 50%;
+  width: 50%;
+}
+
+.wizard-steps li:before {
+  display: block;
+  content: "";
+  width: 100%;
+  height: 1px;
+  font-size: 0;
+  overflow: hidden;
+  border-top: 4px solid #ced1d6;
+  position: relative;
+  top: 21px;
+  z-index: 1;
+}
+
+.wizard-steps li .step {
+  border: 5px solid #ced1d6;
+  color: #546474;
+  font-size: 15px;
+  border-radius: 100%;
+  background-color: #FFF;
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+
+.wizard-steps li.complete .title, .wizard-steps li.active .title {
+  color: #2b3d53;
+}
+
+.wizard-steps li .title {
+  display: block;
+  margin-top: 4px;
+  max-width: 100%;
+  color: #949ea7;
+  font-size: 14px;
+  z-index: 104;
+  text-align: center;
+  table-layout: fixed;
+  word-wrap: break-word;
 }

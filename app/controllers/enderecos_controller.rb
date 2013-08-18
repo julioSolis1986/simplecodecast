@@ -1,4 +1,15 @@
+#encoding: utf-8
 class EnderecosController < ApplicationController
+  autocomplete :endereco, :logradouro, :full => true, :scopes => [:uniquely_logradouro]
+  autocomplete :endereco, :bairro, :full => true, :scopes => [:uniquely_bairro]
+
+  def busca_por_cep
+    endereco = BuscaEndereco.cep params['cep']
+    endereco[:cidade] = Cidade.where(:nome => endereco[:cidade]).first.id
+    endereco[:estado] = Estado.where(:sigla => endereco[:uf].upcase).first.id
+    render :json => {:endereco => endereco}
+  end
+
   # GET /enderecos
   # GET /enderecos.json
   def index

@@ -63,4 +63,8 @@ ActiveSupport::Inflector.inflections do |inflect|
 
   # Irregulares
   inflect.irregular "país", "países"
+
+  # PERSONALIZADOS
+  inflect.singular('grupos_musculares', 'grupo_muscular')
+  inflect.plural('grupo_muscular', 'grupos_musculares')
 end

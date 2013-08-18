@@ -3,6 +3,8 @@ class CreateAvaliacaoFisicas < ActiveRecord::Migration
     create_table :avaliacao_fisicas do |t|
       t.references :anamneses
       t.references :clientes
+
+      t.datetime :deleted_at
       t.timestamps
     end
   end

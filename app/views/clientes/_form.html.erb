@@ -2,14 +2,14 @@
 
 <%= field_set_tag 'Dados Básicos' do %>
   <div class="row-fluid">
-    <%= f.input :nome, :wrapper_html => { :class => 'span6' } %>
+    <%= f.input :nome, :wrapper_html => { :class => 'span6' }, :url => autocomplete_cliente_nome_clientes_path, :as => :autocomplete, :id_element => '', :update_elements => {} %>
     <%= f.input :data_nascimento, :as => :string, :input_html => { :alt => 'datepicker' }, :wrapper_html => { :class => 'span3' }, :validate => { :presence => true, :uniqueness => false } %>
-    <%= f.input :sexo_id, :collection => Sexo.all.map{ |p| [p.nome, p.id] }, :wrapper_html => { :class => 'span3' } %>
+    <%= f.input :sexo_id, :collection => Sexo.all.map{ |p| [p.nome, p.id] }, :wrapper_html => { :class => 'span3' }, :default => 1 %>
   </div>
 
   <div class="row-fluid">
-    <%= f.input :etnia_id, :collection => Etnia.all.map { |p| [p.nome, p.id] }, :wrapper_html => { :class => 'span4' } %>
-    <%= f.input :cpf, :wrapper_html => { :class => 'span4' } %>
+    <%= f.input :etnia_id, :collection => Etnia.all.map { |p| [p.nome, p.id] }, :wrapper_html => { :class => 'span4' }, :default => 1 %>
+    <%= f.input :cpf, :wrapper_html => { :class => 'span4' }, :input_html => { :alt => 'cpf' } %>
     <%= f.input :rg, :wrapper_html => { :class => 'span4' } %>
   </div>
 <% end %>
@@ -17,7 +17,7 @@
 <%= field_set_tag 'Endereço' do %>
   <div class='tab-nested' id="enderecos_field">
     <%= f.simple_fields_for :enderecos do |endereco| %>
-      <%= render 'enderecos/enderecos_form', f, :endereco %>
+      <%= render 'enderecos/enderecos_form', :f => endereco %>
     <% end %>
 
     <%= link_to_add_association "Novo Endereço", f, :enderecos, :partial => 'enderecos/enderecos_form', :class => 'btn btn-success btn-block green' %>
@@ -28,7 +28,7 @@
   <div>
     <div class='tab-nested' id="emails_field">
       <%= f.simple_fields_for :emails do |email| %>
-      <%= render 'emails/emails_form', f, :email %>
+      <%= render 'emails/emails_form', :f => email %>
       <% end %>
 
       <%= link_to_add_association "Novo E-mail", f, :emails, :partial => 'emails/emails_form', :class => 'btn btn-success btn-block green' %>
@@ -37,7 +37,7 @@
   <div>
     <div class='tab-nested' id="telefones_field">
       <%= f.simple_fields_for :telefones do |telefone| %>
-      <%= render 'telefones/telefones_form', f, :telefone %>
+      <%= render 'telefones/telefones_form', :f => telefone %>
       <% end %>
 
       <%= link_to_add_association "Novo Telefone", f, :telefones, :partial => 'telefones/telefones_form', :class => 'btn btn-success btn-block green' %>

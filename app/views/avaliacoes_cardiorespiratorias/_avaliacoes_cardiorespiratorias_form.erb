@@ -1,7 +1,7 @@
 <div class="nested-fields">
   <%= field_set_tag "Protocolo" do %>
     <div class="row-fluid">
-      <%= f.input :protocolo, :as => :radio_buttons, :collection => ['Pollock', 'McArdle'] , :label => false, :wrapper_html => { :class => 'span12' }, :item_wrapper_class => 'inline' %>
+      <%= f.input :protocolo, :as => :radio_buttons, :collection => ['Cooper', 'Pollock'] , :label => false, :wrapper_html => { :class => 'span12' }, :item_wrapper_class => 'inline', :checked => 'Cooper' %>
     </div>
   <% end %>
 
@@ -16,7 +16,7 @@
       <%= f.input :freq_cardiaca_maxima, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span6' } do %>
         <%= content_tag :div, :class => 'row-fluid' do %>
           <%= f.label :freq_cardiaca_maxima, 'Freq. Cardíaca Máxima', :class => "span5" %>
-          <%= f.text_field :freq_cardiaca_maxima, :class => "span7" %>
+          <%= f.text_field :freq_cardiaca_maxima, :class => "span7", :disabled => true %>
         <% end %>
       <% end %>
     </div>
@@ -28,7 +28,7 @@
         <div class="input-prepend row-fluid">
           <%= content_tag :div, :class => 'row-fluid' do %>
             <%= label_tag :classificao, 'Classificação', :class => "span5" %>
-            <%= text_field_tag :classificao, '', { :class => 'span7' } %>
+            <%= text_field_tag :classificacao_cardiorespiratoria, '', { :class => 'span7', :disabled => true } %>
           <% end %>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="input-prepend row-fluid">
           <%= content_tag :div, :class => 'row-fluid' do %>
             <%= label_tag :vo2_maximo, 'VO2 Máximo', :class => "span5" %>
-            <%= text_field_tag :vo2_maximo, '', { :class => 'span7' } %>
+            <%= text_field_tag :vo2_maximo, '', { :class => 'span7', :disabled => true } %>
           <% end %>
         </div>
       </div>

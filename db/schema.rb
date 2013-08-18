@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130713014738) do
+ActiveRecord::Schema.define(:version => 20130809013216) do
 
   create_table "anamneses", :force => true do |t|
     t.string   "pergunta_1_01"
@@ -24,9 +24,6 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.string   "pergunta_3_05"
     t.string   "pergunta_3_06"
     t.string   "pergunta_3_07"
-    t.string   "pergunta_3_08"
-    t.string   "pergunta_3_09"
-    t.string   "pergunta_3_10"
     t.text     "resposta_1_01"
     t.boolean  "resposta_2_01"
     t.boolean  "resposta_2_02"
@@ -37,9 +34,6 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.boolean  "resposta_3_05"
     t.boolean  "resposta_3_06"
     t.boolean  "resposta_3_07"
-    t.boolean  "resposta_3_08"
-    t.boolean  "resposta_3_09"
-    t.boolean  "resposta_3_10"
     t.integer  "avaliacao_fisica_id"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
@@ -50,21 +44,22 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.integer  "clientes_id"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "avaliacao_perimetros", :force => true do |t|
     t.string  "tipo"
     t.string  "nome"
-    t.integer "valor_1"
-    t.integer "valor_2"
+    t.decimal "valor_1",       :precision => 10, :scale => 4
+    t.decimal "valor_2",       :precision => 10, :scale => 4
     t.integer "perimetros_id"
   end
 
   create_table "avaliacoes_cardiorespiratorias", :force => true do |t|
     t.integer  "avaliacao_fisica_id"
     t.string   "protocolo"
-    t.decimal  "distancia_total",      :precision => 10, :scale => 0
-    t.decimal  "freq_cardiaca_maxima", :precision => 10, :scale => 0
+    t.decimal  "distancia_total",      :precision => 10, :scale => 4
+    t.decimal  "freq_cardiaca_maxima", :precision => 10, :scale => 4
     t.datetime "created_at",                                          :null => false
     t.datetime "updated_at",                                          :null => false
   end
@@ -87,21 +82,35 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.text     "observacao"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "composicoes_corporais", :force => true do |t|
     t.integer  "avaliacao_fisica_id"
     t.string   "protocolo"
-    t.decimal  "peso_atual",          :precision => 10, :scale => 0
-    t.decimal  "altura",              :precision => 10, :scale => 0
-    t.decimal  "abdome",              :precision => 10, :scale => 0
-    t.decimal  "antebraco",           :precision => 10, :scale => 0
-    t.decimal  "coxa",                :precision => 10, :scale => 0
-    t.decimal  "quadril",             :precision => 10, :scale => 0
-    t.decimal  "panturrilha",         :precision => 10, :scale => 0
-    t.decimal  "braco",               :precision => 10, :scale => 0
+    t.decimal  "peso_atual",          :precision => 10, :scale => 4
+    t.decimal  "altura",              :precision => 10, :scale => 4
+    t.decimal  "triciptal",           :precision => 10, :scale => 4
+    t.decimal  "subescapular",        :precision => 10, :scale => 4
+    t.decimal  "peitoral",            :precision => 10, :scale => 4
+    t.decimal  "axilar",              :precision => 10, :scale => 4
+    t.decimal  "supra_iliaca",        :precision => 10, :scale => 4
+    t.decimal  "abdominal",           :precision => 10, :scale => 4
+    t.decimal  "coxa",                :precision => 10, :scale => 4
     t.datetime "created_at",                                         :null => false
     t.datetime "updated_at",                                         :null => false
+  end
+
+  create_table "dias", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "dificuldades_exercicios", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "emails", :force => true do |t|
@@ -139,6 +148,70 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.string "nome"
   end
 
+  create_table "exemplos_exercicios", :force => true do |t|
+    t.string   "imagem_file_name"
+    t.string   "imagem_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
+    t.integer  "exercicio_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "exercicios", :force => true do |t|
+    t.string   "nome"
+    t.integer  "grupo_muscular_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.text     "descricao"
+    t.integer  "tipo_exercicio_id"
+    t.integer  "dificuldade_exercicio_id"
+  end
+
+  create_table "exercicios_fichas_exercicios", :force => true do |t|
+    t.integer  "exercicio_id"
+    t.integer  "ficha_exercicio_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "fichas", :force => true do |t|
+    t.integer  "clientes_id"
+    t.date     "inicio"
+    t.date     "fim"
+    t.string   "objetivo"
+    t.text     "observacao"
+    t.boolean  "exemplo"
+    t.datetime "deleted_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "fichas_exercicios", :force => true do |t|
+    t.integer  "fichas_id"
+    t.string   "exercicios"
+    t.string   "series"
+    t.string   "repeticoes"
+    t.string   "carga"
+    t.integer  "dia_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "intervalos"
+    t.integer  "tipo_exercicio_id"
+    t.string   "duracao"
+    t.string   "intensidade"
+  end
+
+  create_table "grupos_musculares", :force => true do |t|
+    t.string   "nome"
+    t.datetime "deleted_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "grupos_musculares_id"
+    t.text     "descricao"
+  end
+
   create_table "neuromotores", :force => true do |t|
     t.integer  "avaliacao_fisica_id"
     t.integer  "abdominal_repeticoes"
@@ -167,6 +240,25 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "rastreabilidades", :force => true do |t|
+    t.integer  "rastreavel_id"
+    t.string   "rastreavel_type"
+    t.integer  "usuario_id"
+    t.string   "acao"
+    t.text     "mensagem"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "repeticoes_fichas_exercicios", :force => true do |t|
+    t.integer  "ficha_exercicio_id"
+    t.string   "repeticoes"
+    t.string   "intervalos"
+    t.string   "cargas"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "sexos", :force => true do |t|
     t.string "nome"
   end
@@ -183,12 +275,19 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
   add_index "tags", ["tageable_id"], :name => "index_tags_on_tageable_id"
 
   create_table "telefones", :force => true do |t|
-    t.integer  "numero"
-    t.integer  "ramal"
+    t.string   "numero"
+    t.string   "ramal"
     t.integer  "telefonable_id"
     t.string   "telefonable_type"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+  end
+
+  create_table "tipos_exercicios", :force => true do |t|
+    t.string   "nome"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "usuarios", :force => true do |t|
@@ -218,6 +317,7 @@ ActiveRecord::Schema.define(:version => 20130713014738) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.datetime "deleted_at"
   end
 
   add_index "usuarios", ["authentication_token"], :name => "index_usuarios_on_authentication_token", :unique => true

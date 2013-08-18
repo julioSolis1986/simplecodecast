@@ -5,8 +5,8 @@ class CreateAvaliacaoCardiorespiratoria < ActiveRecord::Migration
 
       t.string :protocolo
 
-      t.decimal :distancia_total
-      t.decimal :freq_cardiaca_maxima
+      t.decimal :distancia_total, :precision => 10, :scale => 4
+      t.decimal :freq_cardiaca_maxima, :precision => 10, :scale => 4
 
       t.timestamps
     end

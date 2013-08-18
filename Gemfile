@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
 gem 'mysql2'
+gem 'rails-i18n'
+gem 'delocalize'
 
 group :assets do
   gem 'uglifier', '>= 1.0.3'
@@ -20,9 +22,20 @@ gem 'simple_form'
 gem 'thin'
 gem 'inherited_resources'
 gem 'brazilian-rails'
-gem 'therubyracer'
+gem 'therubyracer', :platform => :ruby
 gem 'lazy_high_charts'
 gem 'devise'
+gem 'rails3-jquery-autocomplete'
+gem 'sunspot_rails'
+gem 'progress_bar'
+gem "acts_as_paranoid", "~>0.4.0"
+gem 'ancestry'
+
+group :development, :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'sunspot_solr'
+end
 
 #gem "nested_form"
 

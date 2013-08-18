@@ -1,0 +1,72 @@
+<div class="nested-fields">
+<!--   <div style='display: table'>
+  <div style='display: table-cell; height: 100%; vertical-align: middle; text-align: center; '>
+    <div style='display:inline-block; vertical-align: middle; background-color: #EEE; width: 10px; height: 90%; margin: 5% 10px 5% 0; cursor: pointer;'>
+    </div>
+  </div>
+  <div style='display: table-cell; width: 100%;'> -->
+  <% if local_assigns[:tipo_exercicio] == 1 %>
+    <div class='row-fluid'>
+      <div class='span5'>
+        <div class='row-fluid'>
+          <%= link_to_add_association "+", f, :exercicios_fichas_exercicios, :partial => 'exercicios_fichas_exercicios_form', :class => 'btn btn-success span1 green', :'data-association-insertion-traversal' => :next, :'data-association-insertion-node' => '.span11', :'data-association-insertion-method' => :prepend %>
+
+          <div class='span11'>
+            <%= f.simple_fields_for :exercicios_fichas_exercicios do |exercicio_ficha_exercicio| %>
+              <%= render 'exercicios_fichas_exercicios_form', :f => exercicio_ficha_exercicio %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <%= f.input :series, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span1' } do %>
+          <%= f.text_field :series, :class => "span12", :placeholder => 'Séries' %>
+      <% end %>
+
+      <div class='span5'>
+        <%= link_to_add_association "+", f, :repeticoes_fichas_exercicios, :partial => 'repeticoes_fichas_exercicios_form', :class => 'btn btn-success span1 green', :'data-association-insertion-traversal' => :next, :'data-association-insertion-node' => '.span11', :'data-association-insertion-method' => :prepend %>
+
+        <div class='span11'>
+          <%= f.simple_fields_for :repeticoes_fichas_exercicios do |repeticao_ficha_exercicio| %>
+            <%= render 'repeticoes_fichas_exercicios_form', :f => repeticao_ficha_exercicio %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class='span1'>
+        <%= f.input :tipo_exercicio_id, :as => :hidden, :input_html => { :value => 1 } %>
+        <%= f.input :dia_id, :as => :hidden, :input_html => { :value => local_assigns[:dia] } %>
+        <%= link_to_remove_association 'Excluir', f, :class => 'btn btn-danger btn-remove btn-block red sem-margem-top' %>
+      </div>
+    </div>
+  <% else %>
+    <!-- <div class='row-fluid'>
+      <div class='span5'>Exercício</div>
+      <div class='span3'>Duração</div>
+      <div class='span3'>Intensidade</div>
+      <div class='span1'></div>
+    </div> -->
+
+    <div class='row-fluid'>
+      <%= f.input :exercicio, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span5' } do %>
+          <%= f.text_field :exercicio, :class => "span12 tags-exercicios", :placeholder => 'Exercício' %>
+      <% end %>
+
+      <%= f.input :series, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span3' } do %>
+          <%= f.text_field :series, :class => "span12", :placeholder => 'Duração' %>
+      <% end %>
+
+      <%= f.input :repeticoes, :wrapper => :prepend, :label => false, :wrapper_html => { :class => 'span3' } do %>
+          <%= f.text_field :repeticoes, :class => "span12", :placeholder => 'Intensidade' %>
+      <% end %>
+
+      <div class='span1'>
+        <%= f.input :tipo_exercicio_id, :as => :hidden, :input_html => { :value => 2 } %>
+        <%= f.input :dia_id, :as => :hidden, :input_html => { :value => local_assigns[:dia] } %>
+        <%= link_to_remove_association 'Excluir', f, :class => 'btn btn-danger btn-remove btn-block red sem-margem-top' %>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <!-- </div> -->
+</div>

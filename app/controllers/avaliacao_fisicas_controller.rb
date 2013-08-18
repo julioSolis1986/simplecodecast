@@ -1,7 +1,8 @@
 #encoding: utf-8
 class AvaliacaoFisicasController < InheritedResources::Base
   def index
-    @clientes = Cliente.paginate(:page => params[:page], :per_page => 10)
+    @avaliacoes_fisicas = AvaliacaoFisica.paginate(:page => params[:page], :per_page => 10)
+    @cliente = Cliente.new
   end
 
   def new
@@ -24,6 +25,12 @@ class AvaliacaoFisicasController < InheritedResources::Base
         }
         f.series(series)
       end
+    end
+  end
+
+  def create
+    super do |format|
+      format.html { redirect_to collection_url }
     end
   end
 end

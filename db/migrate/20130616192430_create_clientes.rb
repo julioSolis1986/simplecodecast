@@ -9,6 +9,7 @@ class CreateClientes < ActiveRecord::Migration
       t.integer :etnia_id
       t.text :observacao
 
+      t.datetime :deleted_at
       t.timestamps
     end
   end

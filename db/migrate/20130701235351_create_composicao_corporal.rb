@@ -5,15 +5,16 @@ class CreateComposicaoCorporal < ActiveRecord::Migration
 
       t.string :protocolo
 
-      t.decimal :peso_atual
-      t.decimal :altura
+      t.decimal :peso_atual, :precision => 10, :scale => 4
+      t.decimal :altura, :precision => 10, :scale => 4
 
-      t.decimal :abdome
-      t.decimal :antebraco
-      t.decimal :coxa
-      t.decimal :quadril
-      t.decimal :panturrilha
-      t.decimal :braco
+      t.decimal :triciptal, :precision => 10, :scale => 4
+      t.decimal :subescapular, :precision => 10, :scale => 4
+      t.decimal :peitoral, :precision => 10, :scale => 4
+      t.decimal :axilar, :precision => 10, :scale => 4
+      t.decimal :supra_iliaca, :precision => 10, :scale => 4
+      t.decimal :abdominal, :precision => 10, :scale => 4
+      t.decimal :coxa, :precision => 10, :scale => 4
 
       t.timestamps
     end

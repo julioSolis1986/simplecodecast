@@ -1,0 +1,23 @@
+<%= simple_form_for @grupo_muscular, :html => { :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
+
+<%= field_set_tag 'Dados Básicos' do %>
+  <%= render :partial => 'grupos_musculares/grupos_musculares_form', :locals => { :f => f, :root => true } %>
+<% end %>
+
+<%= field_set_tag 'Derivados' do %>
+  <div class='tab-nested' id="enderecos_field">
+    <% @grupo_muscular.derivados.each do |derivado| %>
+      <%= f.simple_fields_for :derivados, derivado do |ff| %>
+        <%= render :partial => 'grupos_musculares/grupos_musculares_form', :locals => { :f => ff, :root => false } %>
+      <% end %>
+    <% end %>
+
+    <%= link_to_add_association "Novo Derivado", f, :derivados, :partial => 'grupos_musculares/grupos_musculares_form', :class => 'btn btn-success btn-block green', :render_options => {:locals => { :root => false } } %>
+  </div>
+<% end %>
+
+<div class="btn-group navigation-modal form-confirm pull-right">
+  <%= link_to 'Voltar', grupos_musculares_path, :class => 'btn' %>
+  <%= f.submit :class => 'btn btn-primary' %>
+</div>
+<% end %>

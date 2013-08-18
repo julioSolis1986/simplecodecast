@@ -14,23 +14,23 @@
       <a class='ativo' href='#'>Todos</a>
     </h1>
     <h1>
-      <a href='#'>Ativos</a>
-    </h1>
-    <h1>
       <a href='#'>Inativos</a>
     </h1>
 
     <div class="form-search pull-right">
-      <input class='input-medium search-query' placeholder='Buscar...' type="text">
+      <form action="<%= clientes_path %>" method="GET">
+      <input name='palavra_chave' class='input-medium search-query' placeholder='Buscar...' type="text">
       <i class='icon-search'></i>
+      </form>
     </div>
   </div>
   <table class="lista-conteudo">
     <thead>
-      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Nome</th>
-      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Sexo</th>
-      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Data de Nascimento</th>
-      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> CPF</th>
+      <th><%= ordenacao :nome %></th>
+      <th><%= ordenacao :sexo %></th>
+      <th><%= ordenacao :data_nascimento %></th>
+      <th><%= ordenacao :email %></th>
+      <th><%= ordenacao :telefone %></th>
       <th></th>
     </thead>
 
@@ -38,8 +38,9 @@
     <tr>
       <td><%= link_to cliente.nome, cliente, :class => 'conteudo-modal' %></td>
       <td><%= link_to cliente.sexo.nome, cliente, :class => 'conteudo-modal' %></td>
-      <td><%= link_to cliente.data_nascimento, cliente, :class => 'conteudo-modal' %></td>
-      <td><%= link_to cliente.cpf, cliente, :class => 'conteudo-modal' %></td>
+      <td><%= link_to I18n.localize(cliente.data_nascimento), cliente, :class => 'conteudo-modal' %></td>
+      <td><%= cliente.emails.blank? ? 'Não cadastrado' : link_to(cliente.emails.first.email, cliente, :class => 'conteudo-modal') %></td>
+      <td><%= cliente.telefones.blank? ? 'Não cadastrado' : link_to(cliente.telefones.first.numero, cliente, :class => 'conteudo-modal') %></td>
       <td class='comando'><%= link_to 'Excluir', cliente, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
     </tr>
   <% end %>

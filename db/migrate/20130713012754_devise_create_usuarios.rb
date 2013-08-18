@@ -37,6 +37,7 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
 
       t.string :nome
       t.date :data_nascimento
+      t.datetime :deleted_at
     end
 
     add_index :usuarios, :email,                :unique => true

@@ -4,8 +4,8 @@ class CreateAvaliacaoPerimetros < ActiveRecord::Migration
       t.string :tipo
       t.string :nome
 
-      t.integer :valor_1
-      t.integer :valor_2
+      t.decimal :valor_1, :precision => 10, :scale => 4
+      t.decimal :valor_2, :precision => 10, :scale => 4
 
       t.references :perimetros
     end

@@ -8,4 +8,3 @@ Encoding.default_internal = Encoding::UTF_8
 
 # Initialize the rails application
 Gerenciador::Application.initialize!
-require 'brazilian-rails'

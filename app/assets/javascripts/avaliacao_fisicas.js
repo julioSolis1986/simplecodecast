@@ -2,15 +2,87 @@
 // All this logic will automatically be available in application.js.
 
 $(document).ready(function() {
+  $('#js-submit_cliente').prop('disabled', 'disabled');
+
+  $('#js-cliente_nome').bind('railsAutocomplete.select', function(event, data){
+    /* Do something here */
+    if(data.item.id != '') {
+      $('#js-submit_cliente').prop('disabled', '');
+    } else {
+      $('#js-submit_cliente').prop('disabled', 'disabled');
+    }
+  });
+
   $('table').accordion({header: '.cliente',
                         collapsible: true});
-  
+
   $('.cliente a').click(function(e) {
     e.stopPropagation();
   })
 
+  $('#avaliacao_fisica_composicao_corporal_attributes_peso_atual, #avaliacao_fisica_composicao_corporal_attributes_triciptal, #avaliacao_fisica_composicao_corporal_attributes_subescapular, #avaliacao_fisica_composicao_corporal_attributes_peitoral, #avaliacao_fisica_composicao_corporal_attributes_axilar, #avaliacao_fisica_composicao_corporal_attributes_supra_iliaca, #avaliacao_fisica_composicao_corporal_attributes_abdominal, #avaliacao_fisica_composicao_corporal_attributes_coxa').keyup(function() {
+    aluno_sexo = $('#aluno_sexo').val();
+    aluno_idade = $('#aluno_idade').val();
+
+    if($('#avaliacao_fisica_composicao_corporal_attributes_protocolo_pollock').is(":checked")) {
+      if(aluno_sexo == 'Masculino') {
+        if($('#avaliacao_fisica_composicao_corporal_attributes_peitoral').is(":filled") && $('#avaliacao_fisica_composicao_corporal_attributes_abdominal').is(":filled") && $('#avaliacao_fisica_composicao_corporal_attributes_coxa').is(":filled") && $('#avaliacao_fisica_composicao_corporal_attributes_peso_atual').is(":filled")) {
+          dobra_peitoral = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_peitoral').val());
+          dobra_abdominal = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_abdominal').val());
+          dobra_coxa = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_coxa').val());
+          peso = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_peso_atual').val());
+
+          soma = dobra_peitoral + dobra_abdominal + dobra_coxa;
+
+          densidade_corporal = 1.10938 - (0.0008267 * (soma)) + (0.0000016 * (Math.pow(soma,2))) - (0.0002574 * (parseInt(aluno_idade)));
+          percentual_gordura = ((4.95 / densidade_corporal) - 4.5) * 100
+          peso_gordo = peso * (percentual_gordura / 100)
+          peso_magro = peso - peso_gordo
+          percentual_gordura_ideal = 10
+          peso_ideal = (peso * (percentual_gordura_ideal / 100)) + peso_magro
+
+          $('#soma_dobras').val(soma);
+
+          $('#gordura_ideal').val(percentual_gordura_ideal);
+          $('#gordura_atual').val(percentual_gordura);
+          $('#peso_gordo').val(peso_gordo);
+          $('#peso_magro').val(peso_magro);
+          $('#peso_ideal').val(peso_ideal);
+        }
+      }
+      else {
+        if($('#avaliacao_fisica_composicao_corporal_attributes_triciptal').is(":filled") && $('#avaliacao_fisica_composicao_corporal_attributes_supra_iliaca').is(":filled") && $('#avaliacao_fisica_composicao_corporal_attributes_coxa').is(":filled") && $('#avaliacao_fisica_composicao_corporal_attributes_peso_atual').is(":filled")) {
+          dobra_triciptal = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_triciptal').val());
+          dobra_supra_iliaca = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_supra_iliaca').val());
+          dobra_coxa = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_coxa').val());
+          peso = parseFloat($('#avaliacao_fisica_composicao_corporal_attributes_peso_atual').val());
+
+          soma = dobra_triciptal + dobra_supra_iliaca + dobra_coxa;
+
+          densidade_corporal = 1.0994921 - (0.0009929 * (soma)) + (0.0000023 * (Math.pow(soma,2))) - (0.0001392 * (parseInt(aluno_idade)));
+          percentual_gordura = ((5.01 / densidade_corporal) - 4.57) * 100
+          peso_gordo = peso * (percentual_gordura / 100)
+          peso_magro = peso - peso_gordo
+          percentual_gordura_ideal = 25
+          peso_ideal = (peso * (percentual_gordura_ideal / 100)) + peso_magro
+
+          $('#soma_dobras').val(soma);
+
+          $('#gordura_ideal').val(percentual_gordura_ideal);
+          $('#gordura_atual').val(percentual_gordura);
+          $('#peso_gordo').val(peso_gordo);
+          $('#peso_magro').val(peso_magro);
+          $('#peso_ideal').val(peso_ideal);
+        }
+      }
+    }
+    else if($('#avaliacao_fisica_composicao_corporal_attributes_protocolo_mcardle').is(":checked")) {
+      // TODO
+    }
+  });
+
   // NEUROMOTORES
-  $('#avaliacao_fisica_neuromotor_attributes_abdominal_repeticoes').keyup(function() {
+  $('#avaliacao_fisica_composicao_corporal_attributes_peso_atual, #avaliacao_fisica_neuromotor_attributes_abdominal_repeticoes').keyup(function() {
     abdominais = $(this).val();
     aluno_sexo = $('#aluno_sexo').val();
     aluno_idade = $('#aluno_idade').val();
@@ -49,7 +121,7 @@ $(document).ready(function() {
         else {
           $('#classificacao_abdominal').val('Excelente');
         }
-      } 
+      }
       else if(aluno_idade <= 49) {
         if(abdominais <= 16) {
           $('#classificacao_abdominal').val('Deficiente');
@@ -136,7 +208,7 @@ $(document).ready(function() {
         else {
           $('#classificacao_abdominal').val('Excelente');
         }
-      } 
+      }
       else if(aluno_idade <= 49) {
         if(abdominais <= 15) {
           $('#classificacao_abdominal').val('Deficiente');
@@ -230,7 +302,7 @@ $(document).ready(function() {
         else {
           $('#classificacao_flexao').val('Excelente');
         }
-      } 
+      }
       else if(aluno_idade <= 49) {
         if(flexoes <= 10) {
           $('#classificacao_flexao').val('Deficiente');
@@ -317,7 +389,7 @@ $(document).ready(function() {
         else {
           $('#classificacao_flexao').val('Excelente');
         }
-      } 
+      }
       else if(aluno_idade <= 49) {
         if(flexoes <= 3) {
           $('#classificacao_flexao').val('Deficiente');
@@ -370,5 +442,22 @@ $(document).ready(function() {
         }
       }
     }
-  })
+  });
+
+ // AVALIAÇÃO CARDIORESPIRATORIA
+  $('#avaliacao_fisica_avaliacao_cardiorespiratoria_attributes_distancia_total').keyup(function() {
+    distancia_total = $('#avaliacao_fisica_avaliacao_cardiorespiratoria_attributes_distancia_total').val();
+    aluno_sexo = $('#aluno_sexo').val();
+    aluno_idade = $('#aluno_idade').val();
+
+    if($('#avaliacao_fisica_avaliacao_cardiorespiratoria_attributes_protocolo_pollock').is(':checked')) {
+      VO2max = ((distancia_total * 60 * 0.2) + 3.5) / 660
+      classificacao = avaliacao_cardiorespiratoria_pollock(aluno_sexo, aluno_idade, VO2max);
+    } else {
+      VO2max = ((distancia_total) - 504.9) / 44.73
+      classificacao = avaliacao_cardiorespiratoria_cooper(aluno_sexo, aluno_idade, distancia_total)
+    }
+    $('#classificacao_cardiorespiratoria').val(classificacao);
+    $('#vo2_maximo').val(VO2max);
+  });
 });

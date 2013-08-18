@@ -1,5 +1,5 @@
 <%= simple_form_for @avaliacao_fisica, :validate => true, :html => { :class => 'form-vertical' }, :defaults => { :input_html => { :class => 'input-block-level' } } do |f| %>
-<%= f.input :clientes_id, :as => :hidden, :input_html => { :value => @clientes_id } %>
+<%= f.input :clientes_id, :as => :hidden, :input_html => { :value => @cliente.id } %>
 
 <% if @avaliacao_fisica.errors.any? %>
 <div id="error_explanation">
