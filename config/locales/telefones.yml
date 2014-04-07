@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      'telefone': 'Telefone'
+    attributes:
+      'telefone':
+        ramal: 'Ramal'
+        numero: 'Número'
+
+    enderecos:
+      index:
+        title: 'Telefones'
+      new:
+        title: 'Novo Telefone'
+      edit:
+        title: 'Edição de Telefone'
+      show:
+        title: 'Telefone'
+

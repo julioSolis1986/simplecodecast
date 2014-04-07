@@ -1,0 +1,18 @@
+pt-BR:
+  activerecord:
+    models:
+      'grupo_muscular': 'Grupo Muscular'
+    attributes:
+      'grupo_muscular':
+        nome: 'Nome'
+        descricao: 'Descrição'
+
+    grupo_muscular:
+      index:
+        title: 'Grupos Musculares'
+      new:
+        title: 'Novo Grupo Muscular'
+      edit:
+        title: 'Edição de Grupo Muscular'
+      show:
+        title: 'Grupo Muscular'

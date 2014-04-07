@@ -1,0 +1,22 @@
+<%= form_for(@tag) do |f| %>
+  <% if @tag.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @tag.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="controls">
+    <%= f.text_field :nome, :placeholder => "Nome", :class => 'span12' %>
+  </div>
+  <div class="controls">
+    <%= f.text_area :descricao, :placeholder => "Descrição", :class => 'span12' %>
+  </div>
+  <div class="btn-group navigation-modal form-confirm">
+    <%= link_to 'Voltar', tags_path, :class => 'btn' %>
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

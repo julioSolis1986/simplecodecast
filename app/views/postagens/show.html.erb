@@ -1,0 +1,45 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3 id="myModalLabel"><%= @postagem.titulo %></h3>
+</div>
+<div class="modal-body">
+  <div class='row-fluid'>
+    <div class='span3'>
+      <ul class="nav nav-pills nav-stacked" id="tabs">
+        <li class="active"><a href="#tab-dados-basicos">Dados Básicos</a></li>
+      </ul>
+    </div>
+
+    <div class='span9 tab-content'>
+      <div class="tab-pane active" id="tab-dados-basicos">
+        <div class='row-fluid'>
+          <div class='span12 show-head'><p><b>Título</b></p></div>
+        </div>
+        <div class='row-fluid'>
+          <div class='span12'><%= @postagem.titulo %></div>
+        </div>
+
+        <div class='row-fluid'>
+          <div class='span12 show-head'><p><b>Conteudo</b></p></div>
+        </div>
+        <div class='row-fluid'>
+          <div class='span12'><%= @postagem.conteudo %></div>
+        </div>
+
+        <div class='row-fluid'>
+          <div class='span12 show-head'><p><b>Tags</b></p></div>
+        </div>
+        <div class='row-fluid'>
+          <div class='span12'>
+          	<% @postagem.tags.each do |tag| %>
+          	<%= tag.nome %>
+          	<% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <%= link_to 'Editar', edit_postagem_path(@postagem), :class => 'btn btn-primary' %>
+</div>

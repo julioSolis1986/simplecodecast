@@ -1,0 +1,25 @@
+pt-BR:
+  activerecord:
+    models:
+      'endereco': 'Endereço'
+    attributes:
+      'endereco':
+        cep: 'CEP'
+        logradouro: 'Logradouro'
+        numero: 'Número'
+        complemento: 'Complemento'
+        bairro: 'Bairro'
+        cidade_id: 'Cidade'
+        estado_id: 'Estado'
+        pais: 'País'
+
+    enderecos:
+      index:
+        title: 'Endereços'
+      new:
+        title: 'Novo Endereço'
+      edit:
+        title: 'Edição de Endereço'
+      show:
+        title: 'Endereço'
+

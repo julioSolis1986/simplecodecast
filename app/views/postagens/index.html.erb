@@ -1,0 +1,52 @@
+<div id="wrapper-conteudo">
+  <div class='page-header'>
+    <h1>Postagens</h1>
+    <h2><i class='icon-book'></i> Listagem</h2>
+  </div>
+
+  <% if params['notice'] %>
+  <div class="alert alert-success"><%= params['notice'] %></div>
+  <% end %>
+
+  <div class='table-header'>
+    <h1>
+      <i class='icon-tag'></i>
+      <a class='ativo' href='#'>Todos</a>
+    </h1>
+    <h1>
+      <a href='#'>Ativos</a>
+    </h1>
+    <h1>
+      <a href='#'>Inativos</a>
+    </h1>
+
+    <div class="pull-right">
+      <input class='input-medium search-query' placeholder='Buscar...' type="text">
+    </div>
+  </div>
+  <table class="lista-conteudo">
+    <thead>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Título</th>
+      <th><i class="icon-chevron-up"></i><i class="icon-chevron-down"></i> Conteúdo</th>
+      <th></th>
+    </thead>
+
+  <% @postagens.each do |postagem| %>
+    <tr>
+      <td><%= link_to postagem.titulo, postagem, :class => 'conteudo-modal' %></td>
+      <td><%= link_to postagem.conteudo, postagem, :class => 'conteudo-modal' %></td>
+      <td class='comando'><%= link_to 'Excluir', postagem, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <div id="conteudo-rodape">
+  <%= link_to 'Nova Postagem', new_postagem_path, :class => 'btn btn-primary' %>
+  <%= pagination @postagens %>
+  </div>
+</div>
+
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

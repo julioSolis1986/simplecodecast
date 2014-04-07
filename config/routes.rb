@@ -1,43 +1,36 @@
-ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
+Gerenciador::Application.routes.draw do
+  devise_for :usuarios
+  root :to => "pages#index"
 
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
+  resources :avaliacao_fisicas
+  resources :fichas
 
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
+  resources :exercicios do
+    get :autocomplete_exercicio_nome, :on => :collection
+    get :autocomplete_tags_nome, :on => :collection
+  end
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
+  resources :grupos_musculares do
+    get :autocomplete_grupo_muscular_nome, :on => :collection
+  end
 
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
+  resources :clientes do
+    get :autocomplete_cliente_nome, :on => :collection
+  end
 
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
-  
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
+  resources :enderecos do
+    get :busca_por_cep, :on => :collection, :format => :json
+    get :autocomplete_endereco_logradouro, :on => :collection
+    get :autocomplete_endereco_bairro, :on => :collection
+  end
 
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
+  resources :usuarios
+  resources :tags
+  resources :postagens
 
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  resources :estados do
+  	collection do
+        post 'cidades_por_estados'
+    end
+  end
 end

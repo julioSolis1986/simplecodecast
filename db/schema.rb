@@ -1,0 +1,329 @@
+# encoding: UTF-8
+# This file is auto-generated from the current state of the database. Instead
+# of editing this file, please use the migrations feature of Active Record to
+# incrementally modify your database, and then regenerate this schema definition.
+#
+# Note that this schema.rb definition is the authoritative source for your
+# database schema. If you need to create the application database on another
+# system, you should be using db:schema:load, not running all the migrations
+# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# you'll amass, the slower it'll run and the greater likelihood for issues).
+#
+# It's strongly recommended to check this file into your version control system.
+
+ActiveRecord::Schema.define(:version => 20130809013216) do
+
+  create_table "anamneses", :force => true do |t|
+    t.string   "pergunta_1_01"
+    t.string   "pergunta_2_01"
+    t.string   "pergunta_2_02"
+    t.string   "pergunta_3_01"
+    t.string   "pergunta_3_02"
+    t.string   "pergunta_3_03"
+    t.string   "pergunta_3_04"
+    t.string   "pergunta_3_05"
+    t.string   "pergunta_3_06"
+    t.string   "pergunta_3_07"
+    t.text     "resposta_1_01"
+    t.boolean  "resposta_2_01"
+    t.boolean  "resposta_2_02"
+    t.boolean  "resposta_3_01"
+    t.boolean  "resposta_3_02"
+    t.boolean  "resposta_3_03"
+    t.boolean  "resposta_3_04"
+    t.boolean  "resposta_3_05"
+    t.boolean  "resposta_3_06"
+    t.boolean  "resposta_3_07"
+    t.integer  "avaliacao_fisica_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "avaliacao_fisicas", :force => true do |t|
+    t.integer  "anamneses_id"
+    t.integer  "clientes_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.datetime "deleted_at"
+  end
+
+  create_table "avaliacao_perimetros", :force => true do |t|
+    t.string  "tipo"
+    t.string  "nome"
+    t.decimal "valor_1",       :precision => 10, :scale => 4
+    t.decimal "valor_2",       :precision => 10, :scale => 4
+    t.integer "perimetros_id"
+  end
+
+  create_table "avaliacoes_cardiorespiratorias", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.string   "protocolo"
+    t.decimal  "distancia_total",      :precision => 10, :scale => 4
+    t.decimal  "freq_cardiaca_maxima", :precision => 10, :scale => 4
+    t.datetime "created_at",                                          :null => false
+    t.datetime "updated_at",                                          :null => false
+  end
+
+  create_table "cidades", :force => true do |t|
+    t.string   "nome"
+    t.boolean  "capital",    :default => false
+    t.integer  "estado_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "clientes", :force => true do |t|
+    t.string   "nome"
+    t.date     "data_nascimento"
+    t.integer  "sexo_id"
+    t.string   "cpf"
+    t.string   "rg"
+    t.integer  "etnia_id"
+    t.text     "observacao"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.datetime "deleted_at"
+  end
+
+  create_table "composicoes_corporais", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.string   "protocolo"
+    t.decimal  "peso_atual",          :precision => 10, :scale => 4
+    t.decimal  "altura",              :precision => 10, :scale => 4
+    t.decimal  "triciptal",           :precision => 10, :scale => 4
+    t.decimal  "subescapular",        :precision => 10, :scale => 4
+    t.decimal  "peitoral",            :precision => 10, :scale => 4
+    t.decimal  "axilar",              :precision => 10, :scale => 4
+    t.decimal  "supra_iliaca",        :precision => 10, :scale => 4
+    t.decimal  "abdominal",           :precision => 10, :scale => 4
+    t.decimal  "coxa",                :precision => 10, :scale => 4
+    t.datetime "created_at",                                         :null => false
+    t.datetime "updated_at",                                         :null => false
+  end
+
+  create_table "dias", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "dificuldades_exercicios", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "emails", :force => true do |t|
+    t.string   "email"
+    t.integer  "emaiable_id"
+    t.string   "emaiable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "enderecos", :force => true do |t|
+    t.string   "logradouro"
+    t.string   "complemento"
+    t.string   "numero"
+    t.string   "bairro"
+    t.string   "cep"
+    t.integer  "cidade_id"
+    t.integer  "estado_id"
+    t.integer  "pais_id"
+    t.integer  "enderecable_id"
+    t.string   "enderecable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "pais"
+  end
+
+  create_table "estados", :force => true do |t|
+    t.string   "nome"
+    t.string   "sigla"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "etnias", :force => true do |t|
+    t.string "nome"
+  end
+
+  create_table "exemplos_exercicios", :force => true do |t|
+    t.string   "imagem_file_name"
+    t.string   "imagem_content_type"
+    t.integer  "imagem_file_size"
+    t.datetime "imagem_updated_at"
+    t.integer  "exercicio_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "exercicios", :force => true do |t|
+    t.string   "nome"
+    t.integer  "grupo_muscular_id"
+    t.datetime "deleted_at"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+    t.text     "descricao"
+    t.integer  "tipo_exercicio_id"
+    t.integer  "dificuldade_exercicio_id"
+  end
+
+  create_table "exercicios_fichas_exercicios", :force => true do |t|
+    t.integer  "exercicio_id"
+    t.integer  "ficha_exercicio_id"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "fichas", :force => true do |t|
+    t.integer  "clientes_id"
+    t.date     "inicio"
+    t.date     "fim"
+    t.string   "objetivo"
+    t.text     "observacao"
+    t.boolean  "exemplo"
+    t.datetime "deleted_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "fichas_exercicios", :force => true do |t|
+    t.integer  "fichas_id"
+    t.string   "exercicios"
+    t.string   "series"
+    t.string   "repeticoes"
+    t.string   "carga"
+    t.integer  "dia_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "intervalos"
+    t.integer  "tipo_exercicio_id"
+    t.string   "duracao"
+    t.string   "intensidade"
+  end
+
+  create_table "grupos_musculares", :force => true do |t|
+    t.string   "nome"
+    t.datetime "deleted_at"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+    t.integer  "grupos_musculares_id"
+    t.text     "descricao"
+  end
+
+  create_table "neuromotores", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.integer  "abdominal_repeticoes"
+    t.integer  "flexao_repeticoes"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
+  create_table "paises", :force => true do |t|
+    t.string   "nome"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "perimetros", :force => true do |t|
+    t.integer  "avaliacao_fisica_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
+
+  create_table "postagens", :force => true do |t|
+    t.string   "titulo"
+    t.text     "conteudo"
+    t.boolean  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "rastreabilidades", :force => true do |t|
+    t.integer  "rastreavel_id"
+    t.string   "rastreavel_type"
+    t.integer  "usuario_id"
+    t.string   "acao"
+    t.text     "mensagem"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "repeticoes_fichas_exercicios", :force => true do |t|
+    t.integer  "ficha_exercicio_id"
+    t.string   "repeticoes"
+    t.string   "intervalos"
+    t.string   "cargas"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
+  create_table "sexos", :force => true do |t|
+    t.string "nome"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "nome"
+    t.text     "descricao"
+    t.integer  "tageable_id"
+    t.string   "tageable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  add_index "tags", ["tageable_id"], :name => "index_tags_on_tageable_id"
+
+  create_table "telefones", :force => true do |t|
+    t.string   "numero"
+    t.string   "ramal"
+    t.integer  "telefonable_id"
+    t.string   "telefonable_type"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "tipos_exercicios", :force => true do |t|
+    t.string   "nome"
+    t.datetime "deleted_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "usuarios", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.string   "nome"
+    t.date     "data_nascimento"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.datetime "deleted_at"
+  end
+
+  add_index "usuarios", ["authentication_token"], :name => "index_usuarios_on_authentication_token", :unique => true
+  add_index "usuarios", ["confirmation_token"], :name => "index_usuarios_on_confirmation_token", :unique => true
+  add_index "usuarios", ["email"], :name => "index_usuarios_on_email", :unique => true
+  add_index "usuarios", ["reset_password_token"], :name => "index_usuarios_on_reset_password_token", :unique => true
+  add_index "usuarios", ["unlock_token"], :name => "index_usuarios_on_unlock_token", :unique => true
+
+end
