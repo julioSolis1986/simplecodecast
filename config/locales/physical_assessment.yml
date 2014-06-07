@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'physical_assessment': 'Avaliação Física'
+    attributes:
+      'physical_assessment':
+        name: 'Nome'
+        description: 'Descrição'

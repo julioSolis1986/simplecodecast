@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      'muscle_group': 'Grupo Muscular'
+    attributes:
+      'muscle_group':
+        name: 'Nome'
+        description: 'Descrição'

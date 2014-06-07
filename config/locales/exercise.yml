@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      'exercise': 'Exercício'
+    attributes:
+      'exercise':
+        name: 'Nome'
+        description: 'Descrição'
+        difficulty_exercise: 'Dificuldade'
+        exercise_type: 'Tipo Exercício'

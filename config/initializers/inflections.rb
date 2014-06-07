@@ -11,6 +11,9 @@
 # end
 #
 # These inflection rules are supported but not enabled by default:
-# ActiveSupport::Inflector.inflections do |inflect|
-#   inflect.acronym 'RESTful'
-# end
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.uncountable %w(anamnesis)
+  inflect.irregular 'training_serie', 'training_series'
+  inflect.irregular 'TrainingSerie', 'TrainingSeries'
+  inflect.irregular 'Grupo Muscular', 'Grupos Musculares'
+end

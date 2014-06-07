@@ -1,0 +1,16 @@
+pt-BR:
+  activerecord:
+    models:
+      client: 'Cliente'
+    attributes:
+      client:
+        name: 'Nome'
+        cpf: 'CPF'
+        rg: 'RG'
+        gender: 'Sexo'
+        birth_date: 'Data de Nascimento'
+        civil_state: 'Estado Civil'
+        ethnicity: 'Etnia'
+        observation: 'Observações'
+        email: 'Email'
+        phone: 'Telefone'
