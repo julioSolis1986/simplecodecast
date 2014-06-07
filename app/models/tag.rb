@@ -1,4 +1,5 @@
 class Tag < ActiveRecord::Base
+  attr_accessible :name, :description
+
   belongs_to :tageable, :polymorphic => true
-  attr_accessible :nome, :descricao
 end

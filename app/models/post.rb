@@ -1,5 +1,5 @@
-class Postagem < ActiveRecord::Base
-	attr_accessible :conteudo, :status, :titulo, :tags_attributes
+class Post < ActiveRecord::Base
+	attr_accessible :content, :status, :title, :tags_attributes
 	default_value_for :status, false
 
 	has_many :tags, :as => :tageable
