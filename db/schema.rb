@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20130809013216) do
 
-  create_table "address", :force => true do |t|
+  create_table "addresses", :force => true do |t|
     t.string   "street"
     t.string   "complement"
     t.string   "number"
@@ -39,42 +39,52 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
     t.string   "question_3_05"
     t.string   "question_3_06"
     t.string   "question_3_07"
-    t.integer  "physical_assessments_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.text     "answer_1_01"
+    t.boolean  "answer_2_01"
+    t.boolean  "answer_2_02"
+    t.boolean  "answer_3_01"
+    t.boolean  "answer_3_02"
+    t.boolean  "answer_3_03"
+    t.boolean  "answer_3_04"
+    t.boolean  "answer_3_05"
+    t.boolean  "answer_3_06"
+    t.boolean  "answer_3_07"
+    t.integer  "physical_assessment_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "assessment_perimeters", :force => true do |t|
     t.string  "type"
     t.string  "name"
-    t.decimal "value_1",       :precision => 10, :scale => 4
-    t.decimal "value_2",       :precision => 10, :scale => 4
-    t.integer "perimeters_id"
+    t.decimal "value_1",      :precision => 10, :scale => 4
+    t.decimal "value_2",      :precision => 10, :scale => 4
+    t.integer "perimeter_id"
   end
 
   create_table "body_compositions", :force => true do |t|
-    t.integer  "physical_assessments_id"
+    t.integer  "physical_assessment_id"
     t.string   "protocol"
-    t.decimal  "weight",                  :precision => 10, :scale => 4
-    t.decimal  "height",                  :precision => 10, :scale => 4
-    t.decimal  "tricep",                  :precision => 10, :scale => 4
-    t.decimal  "subscapular",             :precision => 10, :scale => 4
-    t.decimal  "chest",                   :precision => 10, :scale => 4
-    t.decimal  "midaxillary",             :precision => 10, :scale => 4
-    t.decimal  "suprailiac",              :precision => 10, :scale => 4
-    t.decimal  "abdominal",               :precision => 10, :scale => 4
-    t.decimal  "thigh",                   :precision => 10, :scale => 4
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
+    t.decimal  "weight",                 :precision => 10, :scale => 4
+    t.decimal  "height",                 :precision => 10, :scale => 4
+    t.decimal  "tricep",                 :precision => 10, :scale => 4
+    t.decimal  "subscapular",            :precision => 10, :scale => 4
+    t.decimal  "chest",                  :precision => 10, :scale => 4
+    t.decimal  "midaxillary",            :precision => 10, :scale => 4
+    t.decimal  "suprailiac",             :precision => 10, :scale => 4
+    t.decimal  "abdominal",              :precision => 10, :scale => 4
+    t.decimal  "thigh",                  :precision => 10, :scale => 4
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   create_table "cardiorespiratory_assessments", :force => true do |t|
-    t.integer  "physical_assessments_id"
+    t.integer  "physical_assessment_id"
     t.string   "protocol"
-    t.decimal  "total_distance",          :precision => 10, :scale => 4
-    t.decimal  "maximum_heart_rate",      :precision => 10, :scale => 4
-    t.datetime "created_at",                                             :null => false
-    t.datetime "updated_at",                                             :null => false
+    t.decimal  "total_distance",         :precision => 10, :scale => 4
+    t.decimal  "maximum_heart_rate",     :precision => 10, :scale => 4
+    t.datetime "created_at",                                            :null => false
+    t.datetime "updated_at",                                            :null => false
   end
 
   create_table "cities", :force => true do |t|
@@ -133,26 +143,26 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "exercises_id"
+    t.integer  "exercise_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
   end
 
   create_table "exercise_exercise_sheets", :force => true do |t|
-    t.integer  "exercises_id"
-    t.integer  "exercise_sheets_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.integer  "exercise_id"
+    t.integer  "exercise_sheet_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "exercise_sheets", :force => true do |t|
-    t.integer  "training_series_id"
-    t.integer  "exercise_types_id"
+    t.integer  "training_serie_id"
+    t.integer  "exercise_type_id"
     t.string   "series"
     t.string   "duration"
     t.string   "intensity"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "exercise_types", :force => true do |t|
@@ -164,13 +174,13 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
 
   create_table "exercises", :force => true do |t|
     t.string   "name"
-    t.integer  "exercise_types_id"
-    t.integer  "difficulty_exercises_id"
-    t.integer  "muscle_groups_id"
+    t.integer  "exercise_type_id"
+    t.integer  "difficulty_exercise_id"
+    t.integer  "muscle_group_id"
     t.text     "description"
     t.datetime "deleted_at"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "genders", :force => true do |t|
@@ -178,26 +188,26 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
   end
 
   create_table "muscle_groups", :force => true do |t|
-    t.integer  "muscle_groups_id"
+    t.integer  "muscle_group_id"
     t.string   "name"
     t.text     "description"
     t.datetime "deleted_at"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   create_table "neuromotors", :force => true do |t|
-    t.integer  "physical_assessments_id"
+    t.integer  "physical_assessment_id"
     t.integer  "abdominal_repetitions"
     t.integer  "pushup_repetitions"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "perimeters", :force => true do |t|
-    t.integer  "physical_assessments_id"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.integer  "physical_assessment_id"
+    t.datetime "created_at",             :null => false
+    t.datetime "updated_at",             :null => false
   end
 
   create_table "phones", :force => true do |t|
@@ -210,6 +220,7 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
   end
 
   create_table "physical_assessments", :force => true do |t|
+    t.integer  "client_id"
     t.datetime "deleted_at"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -224,12 +235,12 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
   end
 
   create_table "repetition_exercise_sheets", :force => true do |t|
-    t.integer  "exercise_sheets_id"
+    t.integer  "exercise_sheet_id"
     t.string   "repetition"
     t.string   "interval"
     t.string   "load"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "sheets", :force => true do |t|
@@ -265,7 +276,7 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
   create_table "traceabilities", :force => true do |t|
     t.integer  "traceable_id"
     t.string   "traceable_type"
-    t.integer  "users_id"
+    t.integer  "user_id"
     t.string   "action"
     t.text     "message"
     t.datetime "created_at",     :null => false
@@ -273,7 +284,7 @@ ActiveRecord::Schema.define(:version => 20130809013216) do
   end
 
   create_table "training_series", :force => true do |t|
-    t.integer  "sheets_id"
+    t.integer  "sheet_id"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

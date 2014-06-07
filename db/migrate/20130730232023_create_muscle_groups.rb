@@ -1,7 +1,7 @@
 class CreateMuscleGroups < ActiveRecord::Migration
   def change
     create_table :muscle_groups do |t|
-      t.references :muscle_groups
+      t.references :muscle_group
 
       t.string :name
       t.text :description

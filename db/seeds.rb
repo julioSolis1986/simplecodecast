@@ -1,5 +1,10 @@
 #encoding: UTF-8
 
+User.create!({:email => "admin@admin.com",
+              :name => "Admin",
+              :password => "123456",
+              :password_confirmation => "123456" })
+
 Day.create!(:name => 'Segunda')
 Day.create!(:name => 'Terça')
 Day.create!(:name => 'Quarta')

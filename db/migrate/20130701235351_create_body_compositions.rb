@@ -1,7 +1,7 @@
 class CreateBodyCompositions < ActiveRecord::Migration
   def change
     create_table :body_compositions do |t|
-      t.references :physical_assessments
+      t.references :physical_assessment
 
       t.string :protocol
 
