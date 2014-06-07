@@ -1,0 +1,56 @@
+<div class="nested-fields">
+  <div class="row-fluid">
+    <div class="span6">
+      <div class="row-fluid">
+        <div class="span12">
+          <%= field_set_tag @physical_assessment.anamnesis.question_1_01 do %>
+        	<div class="row-fluid">
+        	  <%= f.input :answer_1_01, :as => :text, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level', :rows => 11 } %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div class="span12">
+          <%= field_set_tag "Anamnese da prática de atividades físicas" do %>
+          <div class="row-fluid">
+            <%= f.input :answer_2_01, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_2_01, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_2_02, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_2_02, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="span6">
+      <div class="row-fluid">
+        <div class="span12">
+          <%= field_set_tag "Avaliação Clínica (Par-Q)" do %>
+          <div class="row-fluid">
+            <%= f.input :answer_3_01, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_01, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_3_02, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_02, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_3_03, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_03, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_3_04, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_04, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_3_05, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_05, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_3_06, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_06, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <div class="row-fluid">
+            <%= f.input :answer_3_07, :as => :boolean, :inline_label => @physical_assessment.anamnesis.question_3_07, :label => false, :wrapper_html => { :class => 'span12'}, :input_html => { :class => 'input-block-level' } %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

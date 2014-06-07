@@ -1,0 +1,8 @@
+<tr>
+  <td><%= link_to client.name, client, :class => 'conteudo-modal' %></td>
+  <td><%= link_to client.gender.name, client, :class => 'conteudo-modal' %></td>
+  <td><%= link_to I18n.localize(client.birth_date), client, :class => 'conteudo-modal' %></td>
+  <td><%= client.emails.blank? ? 'Não cadastrado' : link_to(client.emails.first.email, client, :class => 'conteudo-modal') %></td>
+  <td><%= client.phones.blank? ? 'Não cadastrado' : link_to(client.phones.first.number, client, :class => 'conteudo-modal') %></td>
+  <td class='comando'><%= link_to 'Excluir', client, method: :delete, data: {confirm: 'Você tem certeza?'} %></td>
+</tr>

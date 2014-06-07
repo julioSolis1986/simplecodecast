@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to exercise.name, exercise, :class => 'conteudo-modal' %></td>
+  <td><%= link_to exercise.muscle_group.name, exercise, :class => 'conteudo-modal' %></td>
+  <td class='comando'><%= link_to 'Excluir', exercise, method: :delete, data: {confirm: 'Você tem certeza?'} %></td>
+</tr>

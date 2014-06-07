@@ -1,0 +1,58 @@
+<div class="nested-fields">
+  <div class="row-fluid">
+    <div class='span3'>
+      <div class="row-fluid">
+        <div class="span12">
+          <%= field_set_tag "Perímetros Unilaterais" do %>
+              <%= f.simple_fields_for :assessment_perimeters do |assessment_perimeter| %>
+                  <% if assessment_perimeter.object.type.to_i == 1 %>
+                      <div class="row-fluid">
+                        <%= assessment_perimeter.input :value_1, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span12'} do %>
+                            <%= content_tag :div, :class => 'row-fluid' do %>
+                                <%= assessment_perimeter.label :value_1, assessment_perimeter.object.name, :class => "span4" %>
+                                <%= assessment_perimeter.text_field :value_1, :class => "span8" %>
+                            <% end %>
+                        <% end %>
+                        <%= assessment_perimeter.input :type, :value => assessment_perimeter.object.type, :as => :hidden %>
+                        <%= assessment_perimeter.input :name, :value => assessment_perimeter.object.name, :as => :hidden %>
+                      </div>
+                  <% end %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class='span9'>
+      <div class="row-fluid">
+        <div class="span12">
+          <%= field_set_tag "Perímetros Bilaterais" do %>
+              <%= f.simple_fields_for :assessment_perimeters do |assessment_perimeter| %>
+                  <% if assessment_perimeter.object.type.to_i == 2 %>
+                      <div class="row-fluid">
+                        <%= content_tag :label, assessment_perimeter.object.name, :class => 'span1 line-height-30' %>
+
+                        <%= assessment_perimeter.input :value_1, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span5'} do %>
+                            <%= content_tag :div, :class => 'row-fluid' do %>
+                                <%= assessment_perimeter.label :value_1, 'Esquerda', :class => "span4" %>
+                                <%= assessment_perimeter.text_field :value_1, :class => "span8" %>
+                            <% end %>
+                        <% end %>
+
+                        <%= assessment_perimeter.input :value_2, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span5'} do %>
+                            <%= content_tag :div, :class => 'row-fluid' do %>
+                                <%= assessment_perimeter.label :value_2, 'Direita', :class => "span4" %>
+                                <%= assessment_perimeter.text_field :value_2, :class => "span8" %>
+                            <% end %>
+                        <% end %>
+
+                        <%= assessment_perimeter.input :type, :value => assessment_perimeter.object.type, :as => :hidden %>
+                        <%= assessment_perimeter.input :name, :value => assessment_perimeter.object.name, :as => :hidden %>
+                      </div>
+                  <% end %>
+              <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

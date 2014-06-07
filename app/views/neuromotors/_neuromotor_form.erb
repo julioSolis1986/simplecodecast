@@ -1,0 +1,41 @@
+<div class="nested-fields">
+  <%= field_set_tag "Força Abdominal" do %>
+      <div class='row-fluid'>
+        <%= f.input :abdominal_repetitions, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span6'} do %>
+            <%= content_tag :div, :class => 'row-fluid' do %>
+                <%= f.label :abdominal_repetitions, 'Repetições', :class => "span5" %>
+                <%= f.text_field :abdominal_repetitions, :class => "span7" %>
+            <% end %>
+        <% end %>
+
+        <div class='span6'>
+          <div class="input-prepend row-fluid">
+            <%= content_tag :div, :class => 'row-fluid' do %>
+                <%= label_tag :classificao, 'Classificação', :class => "span5" %>
+                <%= text_field_tag :classificacao_abdominal, '', {:class => 'span7', :disabled => true} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+
+  <%= field_set_tag "Flexão de Braço" do %>
+      <div class='row-fluid'>
+        <%= f.input :pushup_repetitions, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span6'} do %>
+            <%= content_tag :div, :class => 'row-fluid' do %>
+                <%= f.label :pushup_repetitions, 'Repetições', :class => "span5" %>
+                <%= f.text_field :pushup_repetitions, :class => "span7" %>
+            <% end %>
+        <% end %>
+
+        <div class='span6'>
+          <div class="input-prepend row-fluid">
+            <%= content_tag :div, :class => 'row-fluid' do %>
+                <%= label_tag :classificao, 'Classificação', :class => "span5" %>
+                <%= text_field_tag :classificacao_flexao, '', {:class => 'span7', :disabled => true} %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+  <% end %>
+</div>

@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to physical_assessment.client.name, physical_assessment, :class => 'conteudo-modal' unless physical_assessment.client.nil? %></td>
+  <td><%= link_to I18n.localize(physical_assessment.created_at, :format => :short), physical_assessment, :class => 'conteudo-modal' %></td>
+  <td class='comando'><%= link_to 'Excluir', physical_assessment, method: :delete, data: {confirm: 'Você tem certeza?'} %></td>
+</tr>

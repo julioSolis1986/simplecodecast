@@ -1,0 +1,19 @@
+<div class="nested-fields">
+  <div class='row-fluid'>
+    <%= f.input :repetition, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span4'} do %>
+        <%= f.text_field :repetition, :class => "span12", :placeholder => 'Repetições' %>
+    <% end %>
+
+    <%= f.input :load, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span4'} do %>
+        <%= f.text_field :load, :class => "span12", :placeholder => 'Carga' %>
+    <% end %>
+
+    <%= f.input :interval, :wrapper => :prepend, :label => false, :wrapper_html => {:class => 'span3'} do %>
+        <%= f.text_field :interval, :class => "span12", :placeholder => 'Intervalo' %>
+    <% end %>
+
+    <div class='span1'>
+      <%= link_to_remove_association '-', f, :class => 'btn btn-danger btn-remove btn-block red sem-margem-top' %>
+    </div>
+  </div>
+</div>

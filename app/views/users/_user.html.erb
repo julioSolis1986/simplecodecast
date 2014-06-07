@@ -1,0 +1,5 @@
+<tr>
+  <td><%= link_to user.name, user, :class => 'conteudo-modal' %></td>
+  <td><%= link_to user.email, user, :class => 'conteudo-modal' %></td>
+  <td class='comando'><%= link_to 'Excluir', user, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+</tr>

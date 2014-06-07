@@ -1,0 +1,10 @@
+<tr>
+  <td><%= link_to muscle_group.name, muscle_group, :class => 'conteudo-modal', :remote => true %></td>
+  <td class='comando'><%= link_to 'Excluir', muscle_group, method: :delete, data: {confirm: 'Você tem certeza?'} %></td>
+</tr>
+<% muscle_group.derivatives.each do |derivado| %>
+    <tr>
+      <td><%= link_to derivado.name, muscle_group, :class => 'conteudo-modal', :remote => true %></td>
+      <td class='comando'><%= link_to 'Excluir', derivado, method: :delete, data: {confirm: 'Você tem certeza?'} %></td>
+    </tr>
+<% end %>

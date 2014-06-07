@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
 <head>
   <title>Gerenciador</title>
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
@@ -35,10 +35,10 @@
 
         <li class="light-blue user-profile">
           <a data-toggle="dropdown" href="#" class="user-menu dropdown-toggle">
-            <%= image_tag current_usuario.avatar.url(:thumb), :class => "nav-user-photo" %>
+            <%= image_tag current_user.avatar.url(:thumb), :class => "nav-user-photo" %>
             <span id="user_info">
               <small>Bem vindo,</small>
-              <%= current_usuario.nome %>
+              <%= current_user.name %>
             </span>
 
             <i class="icon-caret-down"></i>
@@ -47,24 +47,21 @@
           <ul class="pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer" id="user_menu">
             <li>
               <a href="#">
-                <i class="icon-cog"></i>
-                Configurações
+                <i class="icon-cog"></i> Configurações
               </a>
             </li>
 
             <li>
-              <%= link_to(edit_usuario_path(current_usuario)) do %>
-                <i class="icon-user"></i>
-                Perfil
+              <%= link_to(edit_user_registration_path(current_user)) do %>
+                <i class="icon-user"></i> Perfil
               <% end %>
             </li>
 
             <li class="divider"></li>
 
             <li>
-            <%= link_to(destroy_usuario_session_path, :method => :delete) do %>
-                <i class="icon-off"></i>
-                Sair
+            <%= link_to(destroy_user_session_path, :method => :delete) do %>
+                <i class="icon-off"></i> Sair
             <% end %>
             </li>
           </ul>
@@ -73,33 +70,33 @@
 
       <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="dropdown <%= html_current_controller?('clientes') %>">
+          <li class="dropdown <%= html_current_controller?('clients') %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Cadastros <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'Clientes', clientes_path %></li>
+              <li><%= link_to Client.model_name.human.pluralize, clients_path %></li>
             </ul>
           </li>
 
-          <li class="dropdown <%= html_current_controller?('avaliacao_fisicas') %>">
+          <li class="dropdown <%= html_current_controller?('physical_assessments') %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Serviços <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'Avaliações Físicas', avaliacao_fisicas_path %></li>
-              <li><%= link_to 'Fichas de Treino', fichas_path %></li>
+              <li><%= link_to PhysicalAssessment.model_name.human.pluralize, physical_assessments_path %></li>
+              <li><%= link_to Sheet.model_name.human.pluralize, sheets_path %></li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
                 <a tabindex="-1" href="#">Parâmetros</a>
                 <ul class="dropdown-menu">
-                  <li><%= link_to 'Exercícios', exercicios_path %></li>
-                  <li><%= link_to 'Grupos Musculares', grupos_musculares_path %></li>
+                  <li><%= link_to Exercise.model_name.human.pluralize, exercises_path %></li>
+                  <li><%= link_to MuscleGroup.model_name.human.pluralize, muscle_groups_path %></li>
                 </ul>
               </li>
             </ul>
           </li>
 
-          <li class="dropdown <%= html_current_controller?('usuarios') %>">
+          <li class="dropdown <%= html_current_controller?('users') %>">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sistema <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><%= link_to 'Usuários', usuarios_path %></li>
+              <li><%= link_to User.model_name.human.pluralize, users_path %></li>
             </ul>
           </li>
         </ul>
@@ -110,77 +107,8 @@
     </div>
   </div>
 
-  <div class='container-fluid' id='main-container'>
-    <div id='menu-lateral' style='display: none;'>
-      <ul class='nav nav-list'>
-        <li <%= html_current_controller?('clientes') %>>
-          <a href="#" class="dropdown-toggle">
-            <i class="icon-group"></i>
-            <span>Cadastros</span>
-            <b class="arrow icon-angle-down"></b>
-          </a>
-
-          <ul class="submenu" style="display: block;">
-            <li>
-              <%= link_to clientes_path, :class => current_controller?('clientes') do %>
-                Clientes
-              <% end %>
-            </li>
-          </ul>
-        </li>
-
-        <li <%= html_current_controller?('postagens') %>>
-          <a href="#" class="dropdown-toggle">
-            <i class="icon-edit"></i>
-            <span>Conteúdos</span>
-            <b class="arrow icon-angle-down"></b>
-          </a>
-
-          <ul class="submenu" style="display: block;">
-            <li>
-              <%= link_to postagens_path, :class => current_controller?('postagens') do %>
-                Postagens
-              <% end %>
-            </li>
-          </ul>
-        </li>
-
-        <li <%= html_current_controller?('avaliacao_fisicas') %>>
-          <a href="#" class="dropdown-toggle">
-            <i class="icon-archive"></i>
-            <span>Serviços</span>
-            <b class="arrow icon-angle-down"></b>
-          </a>
-
-          <ul class="submenu" style="display: block;">
-            <li>
-              <%= link_to avaliacao_fisicas_path, :class => current_controller?('avaliacao_fisicas') do %>
-                Avaliações Físicas
-              <% end %>
-            </li>
-          </ul>
-        </li>
-
-        <li <%= html_current_controller?('usuarios') %>>
-          <a href="#" class="dropdown-toggle">
-            <i class="icon-cog"></i>
-            <span>Sistema</span>
-            <b class="arrow icon-angle-down"></b>
-          </a>
-
-          <ul class="submenu" style="display: block;">
-            <li>
-              <%= link_to usuarios_path, :class => current_controller?('usuarios') do %>
-                Usuários
-              <% end %>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-
     <div id="main-content" class='clearfix'>
-    <%= yield %>
+        <%= yield %>
     </div>
   </div>
 </body>

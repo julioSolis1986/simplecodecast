@@ -1,0 +1,41 @@
+<div id="wrapper-conteudo">
+  <div class='page-header'>
+    <h1><%= resource_class.model_name.human.pluralize %></h1>
+    <h2><i class='icon-book'></i> Listagem</h2>
+  </div>
+
+  <div class='table-header'>
+    <h1>
+      <i class='icon-tag'></i>
+      <a class='ativo' href='#'>Todos</a>
+    </h1>
+
+    <h1>
+      <a href='#'>Inativos</a>
+    </h1>
+
+    <%= render 'shared/search' %>
+  </div>
+  <table class="lista-conteudo">
+    <thead>
+    <% %w(name gender birth_date email phone).each do |attr| %>
+        <th><%= ordenacao(Client.human_attribute_name attr) %></th>
+    <% end %>
+    <th></th>
+    </thead>
+
+    <% @clients.each do |client| %>
+        <%= render client %>
+    <% end %>
+  </table>
+
+  <br/>
+
+  <div id="conteudo-rodape">
+    <%= link_to "Novo #{resource_class.model_name.human}", new_resource_path, :class => 'blue btn btn-primary' %>
+    <%= pagination @clients %>
+  </div>
+</div>
+
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

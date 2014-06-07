@@ -1,0 +1,23 @@
+<div class="nested-fields">
+  <fieldset class='border-bottom'>
+    <legend>
+      <div class='row-fluid'>
+        <div class='span3'>
+          <%= f.text_field :name, :class => "input-block-level", :placeholder => 'Nome da Série' %>
+        </div>
+        <div class='span1'>
+          <%= link_to_remove_association 'Excluir', f, :class => 'btn btn-danger btn-remove btn-block red sem-margem-top' %>
+        </div>
+      </div>
+    </legend>
+    <div class='sortable'>
+      <div class='row-fluid'>
+        <%= f.fields_for :exercise_sheets do |exercise_sheet| %>
+            <%= render 'exercise_sheet_form', :f => exercise_sheet %>
+        <% end %>
+        <%= link_to_add_association "Novo Exercício Anaeróbico", f, :exercise_sheets, :partial => 'exercise_sheet_form', :class => 'btn btn-success span6 green', :render_options => {:locals => {:tipo_exercicio => 1}} %>
+        <%= link_to_add_association "Novo Exercício Aeróbico", f, :exercise_sheets, :partial => 'exercise_sheet_form', :class => 'btn btn-success span6 green', :render_options => {:locals => {:tipo_exercicio => 2}} %>
+      </div>
+    </div>
+  </fieldset>
+</div>

@@ -1,0 +1,61 @@
+<%= simple_form_for @physical_assessment, :validate => true, :html => {:class => 'form-vertical'}, :defaults => {:input_html => {:class => 'input-block-level'}} do |f| %>
+    <%= f.input :client_id, :as => :hidden, :input_html => {:value => @client.id} %>
+
+    <% if @physical_assessment.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @physical_assessment.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <ul class="nav nav-tabs" id="tabs">
+      <li class="active"><a href="#tab-anamnese">Anamnese</a></li>
+      <li><a href="#tab-perimetro">Perímetros</a></li>
+      <li><a href="#tab-composicao-corporal">Composição Corporal</a></li>
+      <li><a href="#tab-neuromotor">Neuromotor</a></li>
+      <li><a href="#tab-avaliacao-cardiorespiratoria">Avaliação Cardiorespiratória</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab-anamnese">
+        <%= f.fields_for :anamnesis do |anamnesis| %>
+            <%= render 'anamnesis/anamnesis_form', :f => anamnesis %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="tab-perimetro">
+        <%= f.simple_fields_for :perimeter do |perimeter| %>
+            <%= render 'perimeters/perimeter_form', :f => perimeter %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="tab-composicao-corporal">
+        <%= f.simple_fields_for :body_composition, :body_composition do |body_composition| %>
+            <%= render 'body_compositions/body_composition_form', :f => body_composition %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="tab-neuromotor">
+        <%= f.simple_fields_for :neuromotor, :neuromotor do |neuromotor| %>
+            <%= render 'neuromotors/neuromotor_form', :f => neuromotor %>
+        <% end %>
+      </div>
+
+      <div class="tab-pane" id="tab-avaliacao-cardiorespiratoria">
+        <%= f.simple_fields_for :cardiorespiratory_assessment, :cardiorespiratory_assessment do |cardiorespiratory_assessment| %>
+            <%= render 'cardiorespiratory_assessments/cardiorespiratory_assessment_form', :f => cardiorespiratory_assessment %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="btn-group navigation-modal form-confirm pull-right">
+      <%= link_to 'Voltar', physical_assessments_path, :class => 'btn' %>
+      <%= f.submit :class => 'btn btn-primary' %>
+    </div>
+<% end %>
+
+<input type='hidden' id='aluno_idade' value='<%= @client.age %>'>
+<input type='hidden' id='aluno_sexo' value='<%= @client.gender.name %>'>

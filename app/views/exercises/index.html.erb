@@ -1,0 +1,43 @@
+<div id="wrapper-conteudo">
+  <div class='page-header'>
+    <h1><%= resource_class.model_name.human.pluralize %></h1>
+    <h2><i class='icon-book'></i> Listagem</h2>
+  </div>
+
+  <div class='table-header'>
+    <h1>
+      <i class='icon-tag'></i>
+      <%= link_to 'Todos', exercises_path, :class => @filter.blank? ? 'ativo' : '' %>
+    </h1>
+    <% MuscleGroup.root.each do |muscle_group| %>
+        <h1>
+          <%= link_to muscle_group.name, exercises_path(:filtro => muscle_group.name), :class => @filter == muscle_group.name ? 'ativo' : '' %>
+        </h1>
+    <% end %>
+
+    <%= render 'shared/search' %>
+  </div>
+
+  <table class="lista-conteudo">
+    <thead>
+    <% %w(name muscle_group).each do |attr| %>
+        <th><%= ordenacao(resource_class.human_attribute_name attr) %></th>
+    <% end %>
+    <th></th>
+    </thead>
+
+    <% @exercises.each do |exercise| %>
+        <%= render exercise %>
+    <% end %>
+  </table>
+
+  <br/>
+
+  <div id="conteudo-rodape">
+    <%= link_to 'Novo Exercício', new_resource_path, :class => 'blue btn btn-primary' %>
+    <%= pagination @exercises %>
+  </div>
+</div>
+
+<div id="modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>

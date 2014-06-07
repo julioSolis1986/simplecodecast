@@ -1,9 +1,0 @@
-<div class="nested-fields imagem-inline-block">
-    <div class="fileupload fileupload-new" data-provides="fileupload">
-      <div class="fileupload-preview thumbnail" style="width: 200px; height: 150px;"><%= image_tag f.object.imagem %></div>
-      <div>
-        <span class="btn btn-file btn-block"><span class="fileupload-new">Selecionar</span><span class="fileupload-exists">Alterar</span><%= f.file_field :imagem %></span>
-        <%= link_to_remove_association 'Excluir', f, :class => 'btn btn-danger btn-remove btn-block sem-margem-top red' %>
-      </div>
-    </div>
-</div>
