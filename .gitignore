@@ -17,3 +17,5 @@
 /config/database.yml
 /solr
 /.idea
+/.sass-cache
+/public/system
