@@ -1,0 +1,556 @@
+@import 'jquery-ui-1.10.3.custom';
+@import 'bootstrap';
+@import 'bootstrap-responsive';
+@import 'bootstrap-tagmanager';
+@import 'jasny-bootstrap';
+@import 'jasny-bootstrap-responsive';
+
+//colors
+$color_0: #438eb9;
+$color_1: #fff;
+$color_2: #555;
+$color_3: #d15b47;
+$color_4: #892e65;
+$color_5: #87b87f;
+$color_6: #62a8d1;
+$color_7: #ffffff;
+$color_8: #8089a0;
+$color_9: #eee;
+$color_10: #f5f5f5;
+$color_11: #e5e5e5;
+$color_12: #e4e4e4;
+$color_13: #f9f9f9;
+$color_14: #585858;
+$color_15: #666;
+$color_16: #616161;
+$color_17: #2679b5;
+$color_18: #e8e8e8;
+$color_19: #212121;
+$color_20: #f6f6f6;
+$color_21: #bbbbbb;
+$color_22: #fafafa;
+$color_23: #eeeeee;
+$color_24: #5293c4;
+$color_25: #ced1d6;
+$color_26: #546474;
+$color_27: #2b3d53;
+$color_28: #949ea7;
+
+//fonts
+$font_0: Open Sans;
+$font_1: Calibri;
+$font_2: Candara;
+$font_3: Arial;
+$font_4: sans-serif !important;
+
+body {
+  text-rendering: optimizelegibility;
+  font-size: 13px;
+}
+.blue {
+  background: $color_0 !important;
+  color: #FFF !important;
+}
+.grey {
+  background: $color_2 !important;
+}
+.red {
+  background: $color_3 !important;
+}
+.purple {
+  background: $color_4 !important;
+}
+.green {
+  background: $color_5 !important;
+  color: #FFF !important;
+}
+.light-blue {
+  background: $color_6 !important;
+}
+.light-blue-color {
+  color: $color_6 !important;
+}
+.white-color {
+  color: #FFFFFF !important;
+}
+.middle-screen-wrapper {
+  position: absolute;
+  height: 431px;
+  width: 1000px;
+  top: 50%;
+  left: 50%;
+  margin-left: -550px;
+  margin-top: -265px;
+  padding: 50px;
+  background-color: #FFFFFF;
+}
+.middle-screen {
+  height: 100%;
+}
+.sem-margem {
+  margin: 0 !important;
+}
+.no-margin-bottom {
+  margin-bottom: 0 !important;
+}
+.shang-nav>li {
+  position: relative;
+  height: 52px;
+}
+.navbar-inverse {
+  .nav-collapse {
+    .nav > li > a {
+      color: #FFF;
+    }
+    .dropdown-menu a {
+      color: $color_8;
+      &:hover {
+        color: #FFF;
+      }
+    }
+  }
+  .in.collapse a {
+    color: #FFF !important;
+  }
+}
+.user-menu {
+  position: relative;
+  color: #EEE;
+  display: block;
+  height: 36px;
+  padding: 8px 8px!important;
+  background-color: transparent;
+}
+#user_info {
+  max-width: 100px;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: top;
+  line-height: 15px;
+  top: 6px;
+  small {
+    display: block;
+  }
+}
+.navbar-inner {
+  border: 0;
+}
+.form-search {
+  position: relative;
+  .search-query {
+    padding-right: 30px;
+    font-family: $font_0, $font_1, $font_2, $font_3, $font_4;
+    font-size: 12px;
+  }
+  .icon-search {
+    color: $color_8;
+    position: absolute;
+    top: 8px;
+    right: 9px;
+    cursor: pointer;
+  }
+}
+#menu-lateral {
+  width: 189px;
+  position: absolute;
+  height: 100%;
+  background-color: $color_10;
+  border-right: 1px solid $color_11;
+  .nav-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav-list>li {
+    display: block;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid $color_12;
+    position: relative;
+    &.active {
+      font-weight: bold;
+    }
+    &.active>a>span {
+      font-weight: bold;
+      color: $color_0;
+    }
+    &.active>a>i {
+      color: $color_0;
+    }
+    &.active>a>b {
+      color: $color_0;
+    }
+    .submenu {
+      display: none;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      background-color: $color_1;
+      border-top: 1px solid $color_11;
+    }
+    .submenu>li {
+      margin-left: 0;
+      position: relative;
+      &:first-child>a {
+        border-top: 0;
+      }
+      &:last-child>a {
+        border-bottom: 0;
+      }
+    }
+    .submenu>li>a {
+      display: block;
+      position: relative;
+      color: $color_16;
+      padding: 7px 0 8px 37px;
+      margin: 0;
+      border-bottom: 1px dotted $color_12;
+      font-size: 12px;
+      &:hover {
+        color: $color_0;
+        text-decoration: none;
+      }
+      &.active {
+        border-right: 3px solid $color_0;
+        color: $color_0;
+      }
+    }
+  }
+  .nav-list>li>a {
+    display: block;
+    height: 38px;
+    line-height: 36px;
+    padding: 0 16px 0 7px;
+    background-color: $color_13;
+    color: $color_14;
+    //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+    text-shadow: none!important;
+    font-size: 13px;
+    text-decoration: none;
+    margin: 0;
+    &:hover {
+      background-color: $color_1;
+      border-left: 3px solid $color_0;
+    }
+    .arrow {
+      display: inline-block;
+      width: 14px!important;
+      height: 14px;
+      line-height: 14px;
+      //Instead of the line below you could use @include text-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
+      text-shadow: none;
+      font-size: 18px;
+      position: absolute;
+      right: 9px;
+      top: 11px;
+      padding: 0;
+      color: $color_15;
+    }
+  }
+}
+#main-container {
+  padding: 0;
+}
+#modal {
+  width: 940px;
+  margin-left: -470px;
+  p b {
+    font-weight: bold;
+  }
+}
+fieldset {
+  min-width: 0 !important;
+  margin-bottom: 20px;
+  &.border-bottom {
+    padding-bottom: 20px;
+    border-bottom: 1px solid $color_11;
+  }
+  legend {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: lighter;
+    color: $color_17;
+    text-align: left;
+  }
+}
+legend {
+  padding-bottom: 10px;
+  border-bottom: 1px solid $color_11;
+}
+label {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: lighter;
+  color: $color_14;
+  &.line-height-30 {
+    line-height: 30px;
+  }
+  &.inline {
+    padding-top: 0 !important;
+    line-height: 35px;
+  }
+  &.checkbox input {
+    margin-top: -5px;
+  }
+}
+div {
+  &.input-prepend {
+    width: 100%;
+    label {
+      line-height: 30px;
+    }
+  }
+  &.fix-width {
+    input {
+      display: inline-block;
+      width: calc(100% - 100px);
+    }
+    select {
+      display: inline-block;
+      width: calc(100% - 100px);
+    }
+    label.width-100 {
+      border-top: 1px solid $color_21;
+      border-left: 1px solid $color_21;
+      border-bottom: 1px solid $color_21;
+      background-color: #FAFAFA;
+      width: 99px;
+      text-align: center;
+      display: inline-block;
+      padding-right: 0;
+      line-height: 28px;
+    }
+  }
+}
+.tab-nested {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid $color_23;
+}
+.dropdown-menu {
+  left: auto;
+}
+.btn-remove {
+  margin-top: 25px;
+  &.sem-margem-top {
+    margin-top: 0;
+  }
+}
+.btn {
+  font-size: 13px !important;
+}
+.width-100-percent {
+  width: 100%;
+}
+.imagem-inline-block {
+  margin-right: 20px;
+  display: inline-block !important;
+}
+.clearboth {
+  clear: both;
+}
+#fuelux-wizard {
+  padding-bottom: 18px;
+  border-bottom: 1px solid $color_11;
+}
+.wizard-steps {
+  list-style: none;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  li {
+    display: block;
+    text-align: center;
+    float: left;
+    &.active {
+      &:before {
+        border-color: $color_24;
+      }
+      .step {
+        border-color: $color_24;
+      }
+      .title {
+        color: $color_27;
+      }
+    }
+    &.complete {
+      &:before {
+        border-color: $color_24;
+      }
+      .step {
+        border-color: $color_24;
+      }
+      .title {
+        color: $color_27;
+      }
+    }
+    &:before {
+      display: block;
+      content: "";
+      width: 100%;
+      height: 1px;
+      font-size: 0;
+      overflow: hidden;
+      border-top: 4px solid $color_25;
+      position: relative;
+      top: 21px;
+      z-index: 1;
+    }
+    .step {
+      border: 5px solid $color_25;
+      color: $color_26;
+      font-size: 15px;
+      //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+      border-radius: 100%;
+      background-color: #FFF;
+      position: relative;
+      z-index: 2;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+    }
+    .title {
+      display: block;
+      margin-top: 4px;
+      max-width: 100%;
+      color: $color_28;
+      font-size: 14px;
+      z-index: 104;
+      text-align: center;
+      table-layout: fixed;
+      word-wrap: break-word;
+    }
+    &:first-child:before {
+      max-width: 51%;
+      left: 50%;
+    }
+    &:last-child:before {
+      max-width: 50%;
+      width: 50%;
+    }
+  }
+}
+.shang-nav .nav-user-photo {
+  margin: 0 8px 0 0;
+  //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+  border-radius: 24px;
+  max-width: 36px!important;
+}
+.navbar .btn-navbar {
+  line-height: 20px;
+  padding: 15px 15px 15px;
+  margin: 0;
+}
+#main-content #wrapper-conteudo {
+  margin: 0;
+  padding: 0 21px 21px;
+  .page-header {
+    border-bottom: 1px solid $color_11;
+    margin-bottom: 12px;
+    margin-top: 0;
+    h1 {
+      padding: 0;
+      margin: 0 0 12px;
+      font-size: 24px;
+      line-height: 24px;
+      font-weight: lighter;
+      color: $color_17;
+      text-align: left;
+    }
+    h2 {
+      padding: 0;
+      margin: 0 0 8px;
+      font-size: 14px;
+      color: $color_8;
+      text-align: left;
+      line-height: 14px;
+    }
+  }
+  .table-header {
+    h1 {
+      padding: 0;
+      margin: 0 12px 0 0;
+      font-size: 18px;
+      color: $color_17;
+      font-weight: lighter;
+      text-align: left;
+      display: inline-block;
+    }
+    h1>a {
+      font-weight: lighter;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      color: $color_8;
+      &.ativo {
+        color: $color_17;
+      }
+    }
+  }
+  table.lista-conteudo {
+    width: 100%;
+    thead {
+      border-top: 1px solid $color_18;
+      border-bottom: 1px solid $color_18;
+      line-height: 30px;
+      th {
+        text-align: left;
+        color: $color_14;
+      }
+    }
+    tr {
+      line-height: 30px;
+      border-top: 1px solid $color_18;
+      border-bottom: 1px solid $color_18;
+      &:nth-child(2n) {
+        background-color: $color_20;
+      }
+    }
+    td {
+      font-size: 12px;
+      color: $color_19;
+      &.comando {
+        text-align: right;
+      }
+    }
+  }
+  #conteudo-rodape .pagination {
+    float: right;
+    margin: 0;
+  }
+}
+#wrapper #wrapper-conteudo #form-div {
+  .form-confirm {
+    float: right;
+  }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+.input-prepend label {
+  text-align: right;
+  padding-right: 10px;
+}
+.tab-pane .nested-fields {
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid $color_23;
+  &:nth-last-of-type(2) {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+a .icon-plus {
+  margin-top: 5px;
+}

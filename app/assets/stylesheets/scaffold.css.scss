@@ -1,0 +1,97 @@
+//colors
+$color_0: #fff;
+$color_1: #333;
+$color_2: #eee;
+$color_3: #000;
+$color_4: #666;
+$color_5: green;
+$color_6: red;
+$color_7: #f0f0f0;
+$color_8: #c00;
+
+//fonts
+$font_0: verdana;
+$font_1: arial;
+$font_2: helvetica;
+$font_3: sans-serif;
+
+//@extend-elements
+//original selectors
+//body,  p,  ol,  ul,  td
+%extend_1 {
+  font-family: $font_0, $font_1, $font_2, $font_3;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+
+body {
+  background-color: $color_0;
+  color: $color_1;
+  @extend %extend_1;
+}
+p {
+  @extend %extend_1;
+}
+ol {
+  @extend %extend_1;
+}
+ul {
+  @extend %extend_1;
+}
+td {
+  @extend %extend_1;
+}
+pre {
+  background-color: $color_2;
+  padding: 10px;
+  font-size: 11px;
+}
+a {
+  color: $color_3;
+  &:visited {
+    color: $color_4;
+  }
+  &:hover {
+    color: $color_0;
+    background-color: $color_3;
+  }
+}
+div {
+  &.field {
+    margin-bottom: 10px;
+  }
+  &.actions {
+    margin-bottom: 10px;
+  }
+}
+#notice {
+  color: $color_5;
+}
+.field_with_errors {
+  padding: 2px;
+  background-color: $color_6;
+  display: table;
+}
+#error_explanation {
+  width: 450px;
+  border: 2px solid $color_6;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: $color_7;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0;
+    background-color: $color_8;
+    color: $color_0;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
