@@ -2,7 +2,8 @@ class PhysicalAssessment < ActiveRecord::Base
   acts_as_paranoid
 
   belongs_to :client
-  belongs_to :anamnesis
+
+  has_one :anamnesis
   has_one :perimeter
   has_one :body_composition
   has_one :cardiorespiratory_assessment

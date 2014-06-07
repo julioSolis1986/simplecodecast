@@ -7,8 +7,8 @@ module ApplicationHelper
 		(link_to url_for(:ordenar_por => atributo, :ordem => :desc) do
 			(content_tag :i, '',:class=> "icon-chevron-down").html_safe
 		end) +
-		(Cliente.human_attribute_name(atributo))
-	end
+		(Client.human_attribute_name(atributo))
+  end
 
 	def current_controller?(test_path)
 		return 'active' if controller.controller_name == test_path

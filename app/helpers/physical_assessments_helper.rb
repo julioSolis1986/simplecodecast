@@ -1,4 +1,4 @@
-module AvaliacaoFisicasHelper
+module PhysicalAssessmentsHelper
 	def percentual_gordura(soma = nil, aluno_idade = nil, aluno_sexo = nil)
 		if aluno_sexo == 'Masculino'
 			densidade_corporal = (1.10938 - (0.0008267 * (soma)) + (0.0000016 * (soma ** 2))) - (0.0002574 * aluno_idade);

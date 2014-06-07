@@ -4,7 +4,7 @@ class Client < ActiveRecord::Base
   attr_accessible :cpf, :birth_date, :ethnicity_id, :name, :observation, :rg,
   :gender_id, :addresses_attributes, :emails_attributes, :phones_attributes
 
-  validates_presence_of :gender_id, :ethnicity_id, :name, :birth_date
+  validates_presence_of :gender, :ethnicity, :name, :birth_date
 
   has_many :physical_assessments
 
@@ -17,7 +17,7 @@ class Client < ActiveRecord::Base
 	has_many :addresses, :as => :addressable
 	accepts_nested_attributes_for :addresses, :reject_if => :all_blank
 
-	has_many :phones, :as => :phoneable
+	has_many :phones, :as => :phonable
 	accepts_nested_attributes_for :phones, :reject_if => :all_blank
 
  	has_many :emails, :as => :emailable
@@ -43,11 +43,11 @@ class Client < ActiveRecord::Base
     date :birth_date
 
     string :gender do
-      gender.nome
+      gender.name
     end
 
     string :ethnicity do
-      ethnicity.nome
+      ethnicity.name
     end
 
     integer :age do
