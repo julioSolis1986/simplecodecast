@@ -1,34 +1,34 @@
 Gerenciador::Application.routes.draw do
-  devise_for :usuarios
-  root :to => "pages#index"
+  devise_for :users
+  root :to => "exercises#index"
 
-  resources :avaliacao_fisicas
-  resources :fichas
+  resources :physical_assessments
+  resources :sheets
 
-  resources :exercicios do
-    get :autocomplete_exercicio_nome, :on => :collection
-    get :autocomplete_tags_nome, :on => :collection
+  resources :exercises do
+    get :autocomplete_exercise_name, :on => :collection
+    get :autocomplete_tags_name, :on => :collection
   end
 
-  resources :grupos_musculares do
-    get :autocomplete_grupo_muscular_nome, :on => :collection
+  resources :muscle_groups do
+    get :autocomplete_muscle_group_name, :on => :collection
   end
 
-  resources :clientes do
-    get :autocomplete_cliente_nome, :on => :collection
+  resources :clients do
+    get :autocomplete_client_name, :on => :collection
   end
 
-  resources :enderecos do
-    get :busca_por_cep, :on => :collection, :format => :json
-    get :autocomplete_endereco_logradouro, :on => :collection
-    get :autocomplete_endereco_bairro, :on => :collection
+  resources :addresses do
+    get :search_postal_code, :on => :collection, :format => :json
+    get :autocomplete_address_street, :on => :collection
+    get :autocomplete_address_neighbourhood, :on => :collection
   end
 
-  resources :usuarios
   resources :tags
-  resources :postagens
+  resources :posts
+  resources :users
 
-  resources :estados do
+  resources :states do
   	collection do
         post 'cidades_por_estados'
     end
