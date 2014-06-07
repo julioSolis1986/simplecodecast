@@ -24,6 +24,7 @@ gem 'acts_as_paranoid'
 gem 'ancestry'
 gem 'sunspot_solr'
 gem 'progress_bar'
+gem 'wicked'
 
 group :development do
   gem 'quiet_assets'

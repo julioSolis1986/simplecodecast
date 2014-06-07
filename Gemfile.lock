@@ -254,6 +254,9 @@ GEM
       raindrops (~> 0.7)
     warden (1.2.3)
       rack (>= 1.0)
+    wicked (0.6.1)
+      activesupport (>= 3.0.7)
+      rails (>= 3.0.7)
     will_paginate (3.0.5)
 
 PLATFORMS
@@ -294,4 +297,5 @@ DEPENDENCIES
   therubyracer
   uglifier
   unicorn
+  wicked
   will_paginate
