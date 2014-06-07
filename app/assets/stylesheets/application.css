@@ -1,14 +1,14 @@
 /*
- *= require bibliotecas/jquery-ui-1.10.3.custom
- *= require bibliotecas/bootstrap
- *= require bibliotecas/bootstrap-responsive
- *= require bibliotecas/bootstrap-tagmanager
- *= require bibliotecas/jasny-bootstrap
- *= require bibliotecas/jasny-bootstrap-responsive
+ *= require jquery-ui-1.10.3.custom
+ *= require bootstrap
+ *= require bootstrap-responsive
+ *= require bootstrap-tagmanager
+ *= require jasny-bootstrap
+ *= require jasny-bootstrap-responsive
  *= require font-awesome
- *= require postagens
- *= require fichas
- *= require exercicios
+ *= require posts
+ *= require sheets
+ *= require exercises
  *= require_self
 */
 

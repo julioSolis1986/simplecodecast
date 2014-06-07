@@ -12,110 +12,78 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bibliotecas/jquery.mask
-//= require bibliotecas/jquery-ui-1.10.3.custom
+//= require jquery.mask.js
+//= require jquery-ui-1.10.3.custom.js
 //= require cocoon
-//= require bibliotecas/highcharts
-//= require bibliotecas/bootstrap
-//= require bibliotecas/bootstrap-fileupload
-//= require bibliotecas/bootstrap-tagmanager
-//= require bibliotecas/jasny-bootstrap
+//= require highcharts.js
+//= require bootstrap.js
+//= require bootstrap-fileupload.js
+//= require bootstrap-tagmanager.js
+//= require jasny-bootstrap.js
 //= require autocomplete-rails
 
-$(document).ready(function() {
-  $("input[alt='datepicker']").mask('11/11/1111');
-  $("input[alt='cep']").mask('99999-999');
-  $("input[alt='cpf']").mask("999.999.999-99");
+$(document).ready(function () {
+    $("input[alt='datepicker']").mask('11/11/1111');
+    $("input[alt='cep']").mask('99999-999');
+    $("input[alt='cpf']").mask("999.999.999-99");
 
- //  $('.dropdown-pill-link').on('click', function() {
-	// alert($(this).parent().find('.dropdown-pill-menu').prop('class'));
-	// $(this).parent().find('.dropdown-pill-menu').show();
-	// return false;
- //  })
+    $('.conteudo-modal').on('click', function () {
+        $.ajax({
+            url: $(this).attr('href'),
 
-  // if($(window).width() < 1200) {
-  //     $('#menu-lateral').hide();
+            success: function (html) {
+                $('#modal').html(html);
+                $('#modal').modal();
 
-  //     $('#main-content').css({'margin-left': 0});
-  //   }
+                $('#tabs a.js-sem_href').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+            },
+            error: function (error) {
+                alert(error.toSource());
+            }
+        });
+        return false;
+    });
 
-  // $(window).resize(function() {
-  //   if($(window).width() < 1200) {
-  //     $('#menu-lateral').stop().animate({width: 0},600, function(){
-  //       $('#menu-lateral').hide();
-  //     });
+    $('.conteudo-modal-avaliacao').on('click', function () {
+        $.ajax({
+            url: $(this).attr('href'),
 
-  //     $('#main-content').stop().animate({'margin-left': 0},600);
-  //   }
-  //   else {
-  //     if($('#menu-lateral').width() == 0) {
-  //       $('#menu-lateral').show();
+            success: function (html) {
+                $('#modal').html(html);
+                $('#modal').modal();
 
-  //       $('#menu-lateral').stop().animate({width: 189},600);
+                $('#tabs a').on('click', function (e) {
+                    e.preventDefault();
+                    $(this).tab('show');
+                });
+            },
+            error: function (error) {
+                alert(error.toSource());
+            }
+        });
+        return false;
+    });
 
-  //       $('#main-content').stop().animate({'margin-left': 189},600);
-  //       }
-  //   }
-  // })
+    $('#enderecos_field').bind('cocoon:after-insert', function (e, inserted_item) {
+        $(inserted_item).find('.estado_cidade').popularCidade();
+    });
 
-  // $( "#menu-lateral" ).accordion({ header: 'a.dropdown-toggle', heightStyle: 'content' });
-  // $( "#menu-lateral" ).accordion({active: parseInt($('li.active>a').prop('id').split('-').pop())});
+    jQuery.ajaxSetup({
+        'beforeSend': function (xhr) {
+            xhr.setRequestHeader("Accept", "text/javascript")
+        }
+    });
 
-	$('.conteudo-modal').on('click', function() {
-		$.ajax({
-			url: $(this).attr('href'),
+    //Cria as abas
+    $('#tabs a').on('click', function (e) {
+        e.preventDefault();
+        $(this).tab('show');
+    });
 
-			success: function(html) {
-				$('#modal').html(html);
-				$('#modal').modal();
-
-				$('#tabs a.js-sem_href').on('click', function (e) {
-					e.preventDefault();
-					$(this).tab('show');
-				});
-			},
-			error: function(error) {
-				alert(error.toSource());
-			}
-		});
-		return false;
-	});
-
-	$('.conteudo-modal-avaliacao').on('click', function() {
-		$.ajax({
-			url: $(this).attr('href'),
-
-			success: function(html) {
-				$('#modal').html(html);
-				$('#modal').modal();
-
-				$('#tabs a').on('click', function (e) {
-					e.preventDefault();
-					$(this).tab('show');
-				});
-			},
-			error: function(error) {
-				alert(error.toSource());
-			}
-		});
-		return false;
-	});
-
-	$('#enderecos_field').bind('cocoon:after-insert', function(e, inserted_item) {
-		$(inserted_item).find('.estado_cidade').popularCidade();
-	});
-
-	jQuery.ajaxSetup({
-		'beforeSend': function(xhr) { xhr.setRequestHeader("Accept", "text/javascript") }
-	});
-
-	//Cria as abas
-	$('#tabs a').on('click', function (e) {
-		e.preventDefault();
-		$(this).tab('show');
-	});
-
-    $(function() {
+    $(function () {
         $('input[alt=datepicker]').datepicker();
     });
 });
