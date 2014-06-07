@@ -1,7 +1,7 @@
-class EstadosController < ApplicationController
+class StatesController < ApplicationController
   def cidades_por_estados
     if params[:id].present?
-      @cidades = Estado.find(params[:id]).cidades
+      @cidades = State.find(params[:id]).cidades
       @id_input = params[:id_input]
     else
       @cidades = []

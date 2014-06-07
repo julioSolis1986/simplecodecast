@@ -1,18 +1,17 @@
-#encoding: utf-8
-class AvaliacaoFisicasController < InheritedResources::Base
+class PhysicalAssessmentsController < InheritedResources::Base
   def index
-    @avaliacoes_fisicas = AvaliacaoFisica.paginate(:page => params[:page], :per_page => 10)
-    @cliente = Cliente.new
+    @physical_assessments = PhysicalAssessment.paginate(:page => params[:page], :per_page => 10)
+    @client = Client.new
   end
 
   def new
     new! do |format|
-      @cliente = Cliente.find(params['clientes_id'])
-      @avaliacao_fisica.build_anamneses
-      @avaliacao_fisica.build_perimetro
-      @avaliacao_fisica.build_composicao_corporal
-      @avaliacao_fisica.build_avaliacao_cardiorespiratoria
-      @avaliacao_fisica.build_neuromotor
+      @client = Client.find(params['clientes_id'])
+      @physical_assessment.build_anamnesis
+      @physical_assessment.build_perimeter
+      @physical_assessment.build_body_composition
+      @physical_assessment.build_cardiorespiratory_assessment
+      @physical_assessment.build_neuromotor
 
       @chart = LazyHighCharts::HighChart.new('pie') do |f|
         series = {

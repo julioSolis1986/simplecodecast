@@ -1,38 +1,37 @@
-#encoding: utf-8
-class ExerciciosController < InheritedResources::Base
-  autocomplete :exercicio, :nome, :full => true
+class ExercisesController < InheritedResources::Base
+  autocomplete :exercise, :name, :full => true
 
   def index
-    @filtro = params['filtro']
-    filtro = @filtro
+    @filter = params['filter']
+    filter = @filter
 
-    unless filtro.blank?
+    unless filter.blank?
       if params['ordenar_por']
-        @exercicios = Exercicio.search do
+        @exercises = Exercise.search do
           fulltext params['palavra_chave']
           order_by params['ordenar_por'], params['ordem']
           order_by :grupo_muscular_derivado, :desc
-          with :grupo_muscular, filtro
+          with :grupo_muscular, filter
           paginate :page => params[:page], :per_page => 15
         end
       else
-        @exercicios = Exercicio.search do
+        @exercises = Exercise.search do
           fulltext params['palavra_chave']
           order_by :grupo_muscular_derivado, :desc
           order_by :created_at, :desc
-          with :grupo_muscular, filtro
+          with :grupo_muscular, filter
           paginate :page => params[:page], :per_page => 15
         end
       end
     else
       if params['ordenar_por']
-        @exercicios = Exercicio.search do
+        @exercises = Exercise.search do
           fulltext params['palavra_chave']
           order_by params['ordenar_por'], params['ordem']
           paginate :page => params[:page], :per_page => 15
         end
       else
-        @exercicios = Exercicio.search do
+        @exercises = Exercise.search do
           fulltext params['palavra_chave']
           order_by :created_at, :desc
           paginate :page => params[:page], :per_page => 15
@@ -40,18 +39,18 @@ class ExerciciosController < InheritedResources::Base
       end
     end
 
-    @exercicios = @exercicios.results
+    @exercises = @exercises.results
   end
 
   def show
-    @exercicio = Exercicio.find(params[:id])
+    @exercise = Exercise.find(params[:id])
 
     render :layout => false
   end
 
   def new
     new! do |format|
-      @exercicio.exemplos_exercicios.build
+      @exercise.exercise_examples.build
     end
   end
 
@@ -62,6 +61,6 @@ class ExerciciosController < InheritedResources::Base
   end
 
   def autocomplete_tags_nome
-    render :json => { :tags => Exercicio.all.map {|e| { :tag => e.nome } } }
+    render :json => { :tags => Exercise.all.map {|e| { :tag => e.nome } } }
   end
 end
